@@ -11,6 +11,5 @@ namespace Rentadora_Dominio
         protected DateTime anio;
         protected int telefono;
         protected List<Alquiler> alquileres;
-        protected Usuario usuario;
     }
 }

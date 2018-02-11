@@ -6,9 +6,27 @@ using System.Threading.Tasks;
 
 namespace Rentadora_Dominio
 {
-    class CAlquiler
+    public class CAlquiler
     {
         private List<Alquiler> alquileres;
-        private static CAlquiler instancia;
+        private static CAlquiler instancia = null;
+
+        public static CAlquiler Instancia
+        {
+            get
+            {
+                if(CAlquiler.instancia == null)
+                {
+                    CAlquiler.instancia = new CAlquiler();
+                }
+                return CAlquiler.instancia;
+            }
+        }
+
+        private CAlquiler()
+        {
+
+        }
+
     }
 }

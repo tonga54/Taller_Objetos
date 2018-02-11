@@ -6,10 +6,36 @@ using System.Threading.Tasks;
 
 namespace Rentadora_Dominio
 {
-    class Usuario
+    public class Usuario
     {
-        private string usario;
+        private string nombre;
         private string contrasenia;
         private string rol;
+
+        public string Nombre
+        {
+            get
+            {
+                return this.nombre;
+            }
+        }
+
+        public string Contrasenia
+        {
+            get
+            {
+                return this.contrasenia;
+            }
+        }
+
+        public string Rol
+        {
+            get
+            {
+                return this.rol;
+            }
+        }
+
+
     }
 }

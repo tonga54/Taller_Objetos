@@ -6,9 +6,45 @@ using System.Threading.Tasks;
 
 namespace Rentadora_Dominio
 {
-    class CUsuario
+    public class CUsuario
     {
         private List<Usuario> usuarios;
-        private static CUsuario instancia;
+        private static CUsuario instancia = null;
+
+        public static CUsuario Instancia
+        {
+            get
+            {
+                if (CUsuario.instancia == null)
+                {
+                    CUsuario.instancia = new CUsuario();
+                }
+                return CUsuario.instancia;
+            }
+        }
+
+        private CUsuario()
+        {
+
+        }
+
+        public Usuario buscarUsuario(string nombre, string contrasenia)
+        {
+            int i = 0;
+            Usuario usr = null;
+
+            while (i < usuarios.Count && usr == null)
+            {
+                if (usuarios[i].Nombre == nombre && usuarios[i].Contrasenia == contrasenia)
+                {
+                    usr = usuarios[i];
+                }
+                i++;
+            }
+
+            return usr;
+
+        }
+
     }
 }
