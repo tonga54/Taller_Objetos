@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rentadora_Dominio
 {
-    class Alquiler
+    public class Alquiler
     {
         private DateTime fechaIni;
         private DateTime fechaFin;

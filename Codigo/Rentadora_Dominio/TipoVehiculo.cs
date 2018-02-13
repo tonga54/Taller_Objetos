@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rentadora_Dominio
 {
-    class TipoVehiculo
+    public class TipoVehiculo
     {
         private string marca;
         private string modelo;

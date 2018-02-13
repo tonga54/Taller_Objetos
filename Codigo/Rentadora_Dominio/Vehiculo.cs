@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rentadora_Dominio
 {
-    class Vehiculo
+    public class Vehiculo
     {
         private string matricula;
         private DateTime anio;

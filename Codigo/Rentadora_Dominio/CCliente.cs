@@ -28,5 +28,12 @@ namespace Rentadora_Dominio
 
         }
 
+
+
+        public void agregarCliente(Cliente cliente)
+        {
+            this.clientes.Add(cliente);
+        }
+
     }
 }

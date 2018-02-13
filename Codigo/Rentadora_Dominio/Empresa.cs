@@ -6,10 +6,41 @@ using System.Threading.Tasks;
 
 namespace Rentadora_Dominio
 {
-    class Empresa : Cliente
+    public class Empresa : Cliente
     {
         private int rut;
         private string razonSocial;
         private string nombre;
+
+        public int Rut
+        {
+            get
+            {
+                return this.rut;
+            }
+        }
+
+        public string RazonSocial
+        {
+            get
+            {
+                return this.razonSocial;
+            }
+        }
+
+        public string Nombre
+        {
+            get
+            {
+                return this.nombre;
+            }
+        }
+
+        public Empresa(int telefono, int rut, string razonSocial, string nombre) : base(telefono)
+        {
+            this.rut = rut;
+            this.razonSocial = razonSocial;
+            this.nombre = nombre;
+        }
     }
 }

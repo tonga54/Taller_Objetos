@@ -6,10 +6,32 @@ using System.Threading.Tasks;
 
 namespace Rentadora_Dominio
 {
-    abstract class Cliente
+    public abstract class Cliente
     {
-        protected DateTime anio;
+        protected int anio;
         protected int telefono;
-        protected List<Alquiler> alquileres;
+        protected List<Alquiler> alquileres = new List<Alquiler>();
+
+        public int Anio
+        {
+            get
+            {
+                return this.anio;
+            }
+        }
+
+        public int Telefono
+        {
+            get
+            {
+                return this.telefono;
+            }
+        }
+
+        public Cliente(int telefono)
+        {
+            this.anio = DateTime.Now.Year;
+            this.telefono = telefono;
+        }
     }
 }
