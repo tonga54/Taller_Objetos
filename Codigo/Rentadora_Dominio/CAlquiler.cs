@@ -51,5 +51,31 @@ namespace Rentadora_Dominio
 
         }
 
+        public Alquiler buscarAlquiler(string matricula)
+        {
+            int i = 0;
+            Alquiler alq = null;
+            while (i < alquileres.Count && alq == null)
+            {
+                if(alquileres[i].matriculaVehiculo() == matricula)
+                {
+                    alq = alquileres[i];
+                }
+            }
+            return alq;
+
+        }
+
+        public bool devolverVehiculo(string matricula)
+        {
+            Alquiler alq = buscarAlquiler(matricula);
+            bool devolucion = false;
+            if (alq != null)
+            {
+                devolucion = alq.devolverVehiculo();
+            }
+            return devolucion;
+        }
+
     }
 }

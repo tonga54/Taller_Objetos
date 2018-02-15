@@ -23,5 +23,22 @@ namespace Rentadora_Dominio
             }
         }
 
+        public bool Disponible
+        {
+            get
+            {
+                return this.disponible;
+            }
+            set
+            {
+                this.disponible = value;
+            }
+        }
+
+        public decimal costoTipoVehiculo()
+        {
+            decimal costoDiario = this.tipoVehiculo.PrecioDiario;
+            return costoDiario;
+        }
     }
 }

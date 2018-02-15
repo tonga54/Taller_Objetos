@@ -11,5 +11,13 @@ namespace Rentadora_Dominio
         private string marca;
         private string modelo;
         private decimal precioDiario;
+
+        public decimal PrecioDiario
+        {
+            get
+            {
+                return this.precioDiario;
+            }
+        }
     }
 }

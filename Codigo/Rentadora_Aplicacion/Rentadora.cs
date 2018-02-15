@@ -75,7 +75,19 @@ namespace Rentadora_Aplicacion
 
         }
 
-    }
+        public Alquiler buscarAlquiler(string matricula)
+        {
+            Alquiler alq= CAlquiler.Instancia.buscarAlquiler(matricula);
+            return alq;
+        }
 
+        public bool devolverVehiculo(string matricula)
+        {
+            bool devolucion = CAlquiler.Instancia.devolverVehiculo(matricula);
+            return devolucion;
+        } 
+
+
+    }
 
 }

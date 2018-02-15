@@ -40,5 +40,30 @@ namespace Rentadora_Dominio
             return this.vehiculo.Matricula;
         }
 
+        public bool devolverVehiculo()
+        {
+            vehiculo.Disponible = true;
+            return vehiculo.Disponible;
+        }
+
+        public decimal montoFaltante()
+        {
+            decimal costoTipoVehiculo = this.vehiculo.costoTipoVehiculo();
+            int cantidadDiasExtra = DateTime.Now.Day - this.fechaFin.Day;
+            decimal costoBase = costoTipoVehiculo * cantidadDiasExtra;
+            //decimal costo = costoBase * CALCULO DE COSTO POLIMORFICO;
+            return costoBase;
+        }
+
+        public decimal calcularCosto()
+        {
+            decimal costoTipoVehiculo = this.vehiculo.costoTipoVehiculo();
+            int cantidadDias = this.fechaFin.Day - this.fechaIni.Day;
+            decimal costoBase = costoTipoVehiculo * cantidadDias;
+            //decimal costo = costoBase * CALCULO DE COSTO POLIMORFICO;
+            this.monto = costoBase;
+            return costoBase;
+        }
+
     }
 }
