@@ -10,7 +10,6 @@ namespace Rentadora_Dominio
     {
         protected int anio;
         protected int telefono;
-        protected List<Alquiler> alquileres = new List<Alquiler>();
 
         public int Anio
         {

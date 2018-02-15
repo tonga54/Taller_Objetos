@@ -36,6 +36,28 @@ namespace Rentadora_Dominio
             }
         }
 
+        public Usuario(string nombre, string contrasenia, int rol)
+        {
+            this.nombre = nombre;
+            this.contrasenia = contrasenia;
+            this.rol = verificarRol(rol);
+        }
+
+        public string verificarRol(int rol)
+        {
+            string devolucion = null;
+            switch (rol)
+            {
+                case 1:
+                    devolucion = "Vendedor";
+                    break;
+                case 2:
+                    devolucion = "Administrador";
+                    break;
+            }
+
+            return devolucion;
+        }
 
     }
 }

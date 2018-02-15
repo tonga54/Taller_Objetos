@@ -28,6 +28,37 @@ namespace Rentadora_Dominio
 
         }
 
+        public bool registrarUsuario(string nombre,string contrasenia, int rol)
+        {
+            bool devolucion = false;
+            bool usr = buscarUsuario(nombre);
+            if (!usr)
+            {
+                usuarios.Add(new Usuario(nombre, contrasenia, rol));
+                devolucion = true;
+            }
+
+            return devolucion;
+        }
+
+
+        public bool buscarUsuario(string nombre)
+        {
+            int i = 0;
+            bool usr = false;
+
+            while (i < usuarios.Count && !usr)
+            {
+                if (usuarios[i].Nombre == nombre)
+                {
+                    usr = true;
+                }
+                i++;
+            }
+
+            return usr;
+        }
+
         public Usuario buscarUsuario(string nombre, string contrasenia)
         {
             int i = 0;

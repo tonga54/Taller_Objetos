@@ -27,12 +27,31 @@ namespace Rentadora_Dominio
         {
 
         }
-
-
-
-        public void agregarCliente(Cliente cliente)
+        
+        //Particular
+        public bool agregarCliente(int telefono, string documento, string tipoDocumento, string pais, string nombre, string apellido)
         {
-            this.clientes.Add(cliente);
+            bool devolucion = false;
+            Particular part = new Particular(telefono, documento, tipoDocumento, pais, nombre, apellido);
+            if (part != null)
+            {
+                clientes.Add(part);
+                devolucion = true;
+            }
+            return devolucion;
+        }
+
+        //Empresa
+        public bool agregarCliente(int telefono, int rut, string razonSocial, string nombre)
+        {
+            bool devolucion = false;
+            Empresa emp = new Empresa(telefono, rut, razonSocial, nombre);
+            if(emp != null)
+            {
+                clientes.Add(emp);
+                devolucion = true;
+            }
+            return devolucion;
         }
 
     }

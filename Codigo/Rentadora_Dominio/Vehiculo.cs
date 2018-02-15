@@ -13,5 +13,15 @@ namespace Rentadora_Dominio
         private decimal kilometraje;
         private List<string> fotos;
         private TipoVehiculo tipoVehiculo;
+        private bool disponible;
+
+        public string Matricula
+        {
+            get
+            {
+                return this.matricula;
+            }
+        }
+
     }
 }

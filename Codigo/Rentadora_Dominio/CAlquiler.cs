@@ -28,5 +28,28 @@ namespace Rentadora_Dominio
 
         }
 
+        public List<Alquiler> listadoVehiculosRetrasados()
+        {
+            List<Alquiler> vehiculosRetrasados = null;
+            for(int i = 0; i < alquileres.Count; i++)
+            {
+                if (alquileres[i].verificarRetraso())
+                {
+                    vehiculosRetrasados.Add(alquileres[i]);
+                }
+            }
+
+            if(vehiculosRetrasados != null && vehiculosRetrasados.Count > 1)
+            {
+                //Fecha de devolución en orden descendente.
+                vehiculosRetrasados.Sort(new OrdenamientoAlquiler(-1, true));
+                //Matrícula en forma ascendente.
+                vehiculosRetrasados.Sort(new OrdenamientoAlquiler(1, false));
+            }
+
+            return vehiculosRetrasados;
+
+        }
+
     }
 }

@@ -36,27 +36,44 @@ namespace Rentadora_Aplicacion
             }
 
             return usr;
-
         }
 
-        public void agregarCliente(int tipo, int rut, string razonSocial, int telefono, string nombre, string apellido, string tipoDocumento, string documento, string pais)
+        public bool registrarUsuario(string nombre, string contrasenia, int rol)
         {
-            
-            switch (tipo)
+            bool devolucion = false;
+            if(nombre != "" && contrasenia != "" && rol > 0 && rol < 3)
             {
-                case 1:
-                    Empresa empresa;
-                    empresa = new Empresa(telefono, rut, razonSocial, nombre);
-                    CCliente.Instancia.agregarCliente(empresa);
-                    break;
-                case 2:
-                    Particular particular;
-                    particular = new Particular(telefono, documento, tipoDocumento, pais, nombre, apellido);
-                    CCliente.Instancia.agregarCliente(particular);
-                    break;
+                devolucion = CUsuario.Instancia.registrarUsuario(nombre, contrasenia, rol);
             }
+
+            return devolucion;
         }
 
+        //Particular
+        public bool agregarCliente(int telefono, string documento, string tipoDocumento, string pais, string nombre, string apellido)
+        {
+            bool devolucion = CCliente.Instancia.agregarCliente(telefono, documento, tipoDocumento, pais, nombre, apellido);
+            return devolucion;
+        }
+
+        //Empresa
+        public bool agregarCliente(int telefono, int rut, string razonSocial, string nombre)
+        {
+            bool devolucion = CCliente.Instancia.agregarCliente(telefono, rut, razonSocial, nombre);
+            return devolucion;
+        }
+
+        public List<Alquiler> listadoVehiculosRetrasados(int rol)
+        {
+            List<Alquiler> lista = null;
+            //Gerente
+            if (rol == 3)
+            {
+                lista = CAlquiler.Instancia.listadoVehiculosRetrasados();
+            }
+            return lista;
+
+        }
 
     }
 

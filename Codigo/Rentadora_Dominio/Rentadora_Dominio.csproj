@@ -48,6 +48,7 @@
     <Compile Include="CUsuario.cs" />
     <Compile Include="CVehiculo.cs" />
     <Compile Include="Empresa.cs" />
+    <Compile Include="OrdenamientoAlquiler.cs" />
     <Compile Include="Particular.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoVehiculo.cs" />
