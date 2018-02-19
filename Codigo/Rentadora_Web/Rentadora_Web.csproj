@@ -94,10 +94,35 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\fonts.css" />
+    <Content Include="css\index.css" />
+    <Content Include="css\style %282%29.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\system.css" />
+    <Content Include="fonts\icomoon.svg" />
+    <Content Include="js\index.js" />
+    <Content Include="js\validation.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="fonts\icomoon.eot" />
+    <Content Include="fonts\icomoon.ttf" />
+    <Content Include="fonts\icomoon.woff" />
+    <Content Include="fonts\SourceSansPro-Black.otf" />
+    <Content Include="fonts\SourceSansPro-BlackIt.otf" />
+    <Content Include="fonts\SourceSansPro-Bold.otf" />
+    <Content Include="fonts\SourceSansPro-BoldIt.otf" />
+    <Content Include="fonts\SourceSansPro-ExtraLight.otf" />
+    <Content Include="fonts\SourceSansPro-ExtraLightIt.otf" />
+    <Content Include="fonts\SourceSansPro-It.otf" />
+    <Content Include="fonts\SourceSansPro-Light.otf" />
+    <Content Include="fonts\SourceSansPro-LightIt.otf" />
+    <Content Include="fonts\SourceSansPro-Regular.otf" />
+    <Content Include="fonts\SourceSansPro-Semibold.otf" />
+    <Content Include="fonts\SourceSansPro-SemiboldIt.otf" />
+    <Content Include="registrarAlquiler.aspx" />
+    <Content Include="Usuario.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -112,6 +137,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="registrarAlquiler.aspx.cs">
+      <DependentUpon>registrarAlquiler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="registrarAlquiler.aspx.designer.cs">
+      <DependentUpon>registrarAlquiler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.Master.cs">
+      <DependentUpon>Usuario.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuario.Master.designer.cs">
+      <DependentUpon>Usuario.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Rentadora_Aplicacion\Rentadora_Aplicacion.csproj">
@@ -119,6 +158,7 @@
       <Name>Rentadora_Aplicacion</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
