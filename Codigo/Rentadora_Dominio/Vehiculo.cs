@@ -15,6 +15,14 @@ namespace Rentadora_Dominio
         private TipoVehiculo tipoVehiculo;
         private bool disponible;
 
+        public TipoVehiculo TipoVehiculo
+        {
+            get
+            {
+                return this.tipoVehiculo;
+            }
+        }
+
         public string Matricula
         {
             get

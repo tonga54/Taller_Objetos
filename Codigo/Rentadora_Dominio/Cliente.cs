@@ -32,5 +32,8 @@ namespace Rentadora_Dominio
             this.anio = DateTime.Now.Year;
             this.telefono = telefono;
         }
+
+        public abstract bool verificarDocumento(int doc);
+
     }
 }

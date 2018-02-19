@@ -77,5 +77,33 @@ namespace Rentadora_Dominio
             return devolucion;
         }
 
+
+        public List<Vehiculo> buscarVehiculosDisponibles(DateTime fechaIni, DateTime fechaFin, string marca, string modelo)
+        {
+            int i = 0;
+            int j = 0;
+            List<Vehiculo> vehiculosDisponibles = new List<Vehiculo>();
+            List<Vehiculo> vehiculosAux = new List<Vehiculo>();
+
+            vehiculosAux = CVehiculo.Instancia.buscarVehiculo(marca, modelo);
+
+            while (i < alquileres.Count)
+            {
+                while(j < vehiculosAux.Count)
+                {
+                    if (alquileres[i].Vehiculo != vehiculosAux[j] && fechaIni < alquileres[i].FechaIni && fechaFin < alquileres[i].FechaFin)
+                    {
+                        vehiculosDisponibles.Add(vehiculosAux[j]);
+                    }
+                }
+                j++;
+                
+            i++;
+            }
+
+
+            return vehiculosDisponibles;
+        }
+
     }
 }

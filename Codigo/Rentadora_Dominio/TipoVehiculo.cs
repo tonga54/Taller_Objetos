@@ -19,5 +19,21 @@ namespace Rentadora_Dominio
                 return this.precioDiario;
             }
         }
+
+        public string Marca
+        {
+            get
+            {
+                return this.marca;
+            }
+        }
+
+        public string Modelo
+        {
+            get
+            {
+                return this.modelo;
+            }
+        }
     }
 }

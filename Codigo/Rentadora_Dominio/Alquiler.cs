@@ -15,6 +15,22 @@ namespace Rentadora_Dominio
         private Vehiculo vehiculo;
         private decimal monto;
 
+        public Vehiculo Vehiculo
+        {
+            get
+            {
+                return this.Vehiculo;
+            }
+        }
+
+        public DateTime FechaIni
+        {
+            get
+            {
+                return this.fechaIni;
+            }
+        }
+
         public DateTime FechaFin
         {
             get

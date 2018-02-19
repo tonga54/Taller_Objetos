@@ -11,7 +11,7 @@ namespace Rentadora_Dominio
         private int rut;
         private string razonSocial;
         private string nombre;
-
+        
         public int Rut
         {
             get
@@ -41,6 +41,17 @@ namespace Rentadora_Dominio
             this.rut = rut;
             this.razonSocial = razonSocial;
             this.nombre = nombre;
+        }
+
+        public override bool verificarDocumento(int doc)
+        {
+            bool retorno = false;
+            if (doc == this.rut)
+            {
+                retorno = true;
+            }
+
+            return retorno;
         }
     }
 }

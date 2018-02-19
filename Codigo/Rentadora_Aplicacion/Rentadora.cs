@@ -50,7 +50,7 @@ namespace Rentadora_Aplicacion
         }
 
         //Particular
-        public bool agregarCliente(int telefono, string documento, string tipoDocumento, string pais, string nombre, string apellido)
+        public bool agregarCliente(int telefono, int documento, int tipoDocumento, string pais, string nombre, string apellido)
         {
             bool devolucion = CCliente.Instancia.agregarCliente(telefono, documento, tipoDocumento, pais, nombre, apellido);
             return devolucion;
@@ -85,7 +85,12 @@ namespace Rentadora_Aplicacion
         {
             bool devolucion = CAlquiler.Instancia.devolverVehiculo(matricula);
             return devolucion;
-        } 
+        }
+
+        public void alquilarVehiculo(DateTime fechaIni, DateTime fechaFin, string marca, string modelo)
+        {
+            
+        }
 
 
     }

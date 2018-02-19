@@ -28,5 +28,22 @@ namespace Rentadora_Dominio
 
         }
 
+        public List<Vehiculo> buscarVehiculo(string marca, string modelo)
+        {
+            int i = 0;
+            List<Vehiculo> vehiculosAux = new List<Vehiculo>();
+
+            while (i < vehiculos.Count)
+            {
+                if (vehiculos[i].TipoVehiculo.Marca == marca && vehiculos[i].TipoVehiculo.Modelo == modelo)
+                {
+                    vehiculosAux.Add(vehiculos[i]);
+                }
+                i++;
+            }
+
+            return vehiculosAux;
+        }
+
     }
 }

@@ -28,5 +28,17 @@ namespace Rentadora_Dominio
 
         }
 
+        public List<TipoVehiculo> mostrarTipoVehiculos()
+        {
+            if (tiposVehiculos.Count >= 1)
+            {
+                return tiposVehiculos;
+            }
+
+            return null;
+        }
+
+        public 
+
     }
 }
