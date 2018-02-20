@@ -8,7 +8,7 @@ namespace Rentadora_Dominio
 {
     public class CTipoVehiculo
     {
-        private List<TipoVehiculo> tiposVehiculos;
+        private List<TipoVehiculo> tiposVehiculos = new List<TipoVehiculo>();
         private static CTipoVehiculo instancia = null;
 
         public static CTipoVehiculo Instancia
@@ -28,17 +28,56 @@ namespace Rentadora_Dominio
 
         }
 
-        public List<TipoVehiculo> mostrarTipoVehiculos()
+        public List<string> listarMarcas()
         {
-            if (tiposVehiculos.Count >= 1)
+            List<string> devolucion = new List<string>();
+
+            for(int i = 0;i < this.tiposVehiculos.Count; i++)
             {
-                return tiposVehiculos;
+                string marcaVehiculo = this.tiposVehiculos[i].ToString();
+                bool repetido = verificarRepetido(devolucion, marcaVehiculo);
+                if (!repetido)
+                {
+                    devolucion.Add(marcaVehiculo);
+                }
             }
 
-            return null;
+            return devolucion;
         }
 
-        public 
+        private bool verificarRepetido(List<string> lista,string valor)
+        {
+            int i = 0;
+            bool bandera = false;
+            while(i < lista.Count && !bandera)
+            {
+                if(lista[i] == valor)
+                {
+                    bandera = true;
+                }
+                i++;
+            }
+            return bandera;
+        }
+
+        public void cargarTipos(string marca, string modelo, decimal precio)
+        {
+            this.tiposVehiculos.Add(new TipoVehiculo(marca, modelo, precio));
+        }
+
+        public List<String> listarModelos(string marca)
+        {
+            List<String> devolucion = new List<string>();
+            for(int i = 0; i < this.tiposVehiculos.Count; i++)
+            {
+                if(this.tiposVehiculos[i].Marca == marca)
+                {
+                    devolucion.Add(this.tiposVehiculos[i].Modelo);
+                }
+            }
+
+            return devolucion;
+        }
 
     }
 }

@@ -35,5 +35,17 @@ namespace Rentadora_Dominio
                 return this.modelo;
             }
         }
+
+        public TipoVehiculo(string marca, string modelo, decimal precioDiario)
+        {
+            this.marca = marca;
+            this.modelo = modelo;
+            this.precioDiario = precioDiario;
+        }
+
+        public override string ToString()
+        {
+            return this.marca;
+        }
     }
 }

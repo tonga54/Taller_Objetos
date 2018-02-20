@@ -13,6 +13,7 @@ namespace Rentadora_Dominio
         private DateTime horaIni;
         private DateTime horaFin;
         private Vehiculo vehiculo;
+        private Cliente cliente;
         private decimal monto;
 
         public Vehiculo Vehiculo

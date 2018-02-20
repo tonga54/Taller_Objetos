@@ -127,7 +127,7 @@ article{
     width:40%;
 }
 
-#form input[type="text"], select,input[type="date"],input[type="number"],input[type="password"],input[type="email"]{
+#form input[type="text"], select,input[type="date"],input[type="number"],input[type="password"],input[type="email"],input[type="time"]{
     display:block;
     width:100%;
     padding: 4px;
@@ -350,4 +350,8 @@ table th {
     font-family:"SourceSansPro-Bold";
     color:red;
     font-size: 1.17em;
+}
+
+select:disabled{
+    background-color:#cbcbcb !important;
 }

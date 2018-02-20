@@ -92,6 +92,22 @@ namespace Rentadora_Aplicacion
             
         }
 
+        public List<string> listarMarcas()
+        {
+            return CTipoVehiculo.Instancia.listarMarcas();
+        }
+
+        public List<String> listarModelos(string marca)
+        {
+           return CTipoVehiculo.Instancia.listarModelos(marca);
+        }
+
+        public void cargarTiposVehiculos()
+        {
+            CTipoVehiculo.Instancia.cargarTipos("Chevrolet","Corsa",400);
+            CTipoVehiculo.Instancia.cargarTipos("Volskwagen", "C4",500);
+            CTipoVehiculo.Instancia.cargarTipos("Chevrolet", "V4",200);
+        }
 
     }
 
