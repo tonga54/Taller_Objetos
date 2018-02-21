@@ -43,6 +43,12 @@ namespace Rentadora_Dominio
             }
         }
 
+
+        public string modelo()
+        {
+            return this.TipoVehiculo.Modelo;
+        }
+
         public decimal costoTipoVehiculo()
         {
             decimal costoDiario = this.tipoVehiculo.PrecioDiario;

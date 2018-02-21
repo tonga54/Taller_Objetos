@@ -92,6 +92,12 @@ namespace Rentadora_Aplicacion
             
         }
 
+        public List<string> buscarVehiculoDisponible(DateTime fechaInicio, DateTime fechaFin, string modelo)
+        {
+            List<string> devolucion = CAlquiler.Instancia.buscarVehiculoDisponibleXFecha(fechaInicio, fechaFin, modelo);
+            return devolucion;
+        }
+
         public List<string> listarMarcas()
         {
             return CTipoVehiculo.Instancia.listarMarcas();

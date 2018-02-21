@@ -57,6 +57,11 @@ namespace Rentadora_Dominio
             return this.vehiculo.Matricula;
         }
 
+        public string modeloVehiculo()
+        {
+            return this.vehiculo.modelo();
+        }
+
         public bool devolverVehiculo()
         {
             vehiculo.Disponible = true;

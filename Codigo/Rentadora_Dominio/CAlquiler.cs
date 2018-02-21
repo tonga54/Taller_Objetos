@@ -8,7 +8,7 @@ namespace Rentadora_Dominio
 {
     public class CAlquiler
     {
-        private List<Alquiler> alquileres;
+        private List<Alquiler> alquileres = new List<Alquiler>();
         private static CAlquiler instancia = null;
 
         public static CAlquiler Instancia
@@ -78,7 +78,7 @@ namespace Rentadora_Dominio
         }
 
 
-        public List<Vehiculo> buscarVehiculosDisponibles(DateTime fechaIni, DateTime fechaFin, string marca, string modelo)
+        /*public List<Vehiculo> buscarVehiculosDisponibles(DateTime fechaIni, DateTime fechaFin, string marca, string modelo)
         {
             int i = 0;
             int j = 0;
@@ -103,6 +103,25 @@ namespace Rentadora_Dominio
 
 
             return vehiculosDisponibles;
+        }*/
+
+        public List<string> buscarVehiculoDisponibleXFecha(DateTime fechaInicio, DateTime fechaFin, string modelo)
+        {
+            List<string> devolucion = null;
+            for(int i = 0; i < alquileres.Count; i++)
+            {
+                if (alquileres[i].modeloVehiculo() == modelo)
+                {
+                    if (alquileres[i].FechaIni < fechaFin && alquileres[i].FechaIni < fechaInicio) {
+                        devolucion.Add(alquileres[i].matriculaVehiculo());
+                    }
+                    else if (alquileres[i].FechaFin > fechaFin && alquileres[i].FechaFin > fechaInicio)
+                    {
+                        devolucion.Add(alquileres[i].matriculaVehiculo());
+                    }
+                }
+            }
+            return devolucion;
         }
 
     }

@@ -6,22 +6,24 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="articleContent" runat="server">
 
-    <asp:Label ID="Label2" runat="server" Text="Marca"></asp:Label>
-    <asp:DropDownList ID="ddlMarca" runat="server" ValidationGroup="registrarAlquiler" AutoPostBack="True" OnSelectedIndexChanged="ddlMarca_SelectedIndexChanged">
-    </asp:DropDownList>
-
-    <asp:Label ID="Label9" runat="server" Text="Modelo"></asp:Label>
-    <asp:DropDownList ID="ddlModelo" runat="server" ValidationGroup="registrarAlquiler" ></asp:DropDownList>
-
     <asp:Label ID="Label1" runat="server" Text="Fecha inicio"></asp:Label>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFechaInicio" ErrorMessage="Fecha inicio vacia" Display="Dynamic" ValidationGroup="registrarAlquiler">*</asp:RequiredFieldValidator>
     <asp:TextBox ID="txtFechaInicio" runat="server" TextMode="Date" ValidationGroup="registrarAlquiler"></asp:TextBox>
-
 
     <asp:Label ID="Label7" runat="server" Text="Fecha fin"></asp:Label>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtFechaFin" ErrorMessage="Fecha de fin vacia" Display="Dynamic" ValidationGroup="registrarAlquiler">*</asp:RequiredFieldValidator>
     <asp:TextBox ID="txtFechaFin" runat="server" TextMode="Date" ValidationGroup="registrarAlquiler"></asp:TextBox>
 
+    <asp:Label ID="Label2" runat="server" Text="Marca"></asp:Label>
+    <asp:DropDownList ID="ddlMarca" runat="server" ValidationGroup="registrarAlquiler" AutoPostBack="True" OnSelectedIndexChanged="ddlMarca_SelectedIndexChanged">
+    </asp:DropDownList>
+
+    <asp:Label ID="Label9" runat="server" Text="Modelo"></asp:Label>
+    <asp:DropDownList ID="ddlModelo" runat="server" ValidationGroup="registrarAlquiler" AutoPostBack="True" OnSelectedIndexChanged="ddlModelo_SelectedIndexChanged" ></asp:DropDownList>
+
+    <asp:Label ID="Label4" runat="server" Text="Coches"></asp:Label>
+    <asp:DropDownList ID="ddlMatricula" runat="server" ValidationGroup="registrarAlquiler">
+    </asp:DropDownList>
 
     <asp:Label ID="Label15" runat="server" Text="Hora inicio"></asp:Label>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtHoraInicio" ErrorMessage="Hora de inicio vacia" Display="Dynamic" ValidationGroup="registrarAlquiler">*</asp:RequiredFieldValidator>
