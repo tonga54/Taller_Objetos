@@ -70,22 +70,24 @@ namespace Rentadora_Dominio
 
         public decimal montoFaltante()
         {
-            decimal costoTipoVehiculo = this.vehiculo.costoTipoVehiculo();
-            int cantidadDiasExtra = DateTime.Now.Day - this.fechaFin.Day;
-            decimal costoBase = costoTipoVehiculo * cantidadDiasExtra;
+            //decimal costoTipoVehiculo = this.vehiculo.costoTipoVehiculo();
+            //int cantidadDiasExtra = DateTime.Now.Day - this.fechaFin.Day;
+            TimeSpan cantidadDiasExtra = DateTime.Now.Subtract(fechaFin);
+            decimal costoBase = cantidadDiasExtra.Days * Vehiculo.costoTipoVehiculo();
             //decimal costo = costoBase * CALCULO DE COSTO POLIMORFICO;
             return costoBase;
         }
 
         public decimal calcularCosto()
         {
-            decimal costoTipoVehiculo = this.vehiculo.costoTipoVehiculo();
-            int cantidadDias = this.fechaFin.Day - this.fechaIni.Day;
-            decimal costoBase = costoTipoVehiculo * cantidadDias;
+            //decimal costoTipoVehiculo = this.vehiculo.costoTipoVehiculo();
+            //int cantidadDias = this.fechaFin.Day - this.fechaIni.Day;
+            TimeSpan cantidadDias = fechaFin.Subtract(fechaIni);
+            //decimal costoBase = costoTipoVehiculo * cantidadDias;
+            decimal costoBase = cantidadDias.Days * Vehiculo.costoTipoVehiculo();
             //decimal costo = costoBase * CALCULO DE COSTO POLIMORFICO;
-            this.monto = costoBase;
+            //this.monto = costoBase;
             return costoBase;
         }
-
     }
 }

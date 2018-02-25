@@ -54,5 +54,14 @@ namespace Rentadora_Dominio
             decimal costoDiario = this.tipoVehiculo.PrecioDiario;
             return costoDiario;
         }
+
+        public decimal obtenerCostoTipoVehiculo()
+        {
+
+            decimal precio = this.TipoVehiculo.PrecioDiario;
+
+            return precio;
+
+        }
     }
 }

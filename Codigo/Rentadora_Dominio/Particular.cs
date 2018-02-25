@@ -73,5 +73,27 @@ namespace Rentadora_Dominio
 
             return retorno;
         }
+
+        public decimal descuentoParticular(decimal costo)
+        {
+            int descuento = 4;
+            return costo - (100 / (descuento * costo));
+        }
+
+        public override decimal calcularCosto(decimal costo)
+        {
+            decimal costoTotal = 0;
+
+            if (this.pais == "URU")
+            {
+                costoTotal = descuentoParticular(costo); 
+            }
+            else
+            {
+                costoTotal = costo;
+            }
+            
+            return costoTotal;
+        }
     }
 }
