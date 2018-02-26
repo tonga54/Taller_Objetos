@@ -53,5 +53,31 @@ namespace Rentadora_Dominio
 
             return retorno;
         }
+
+        public override decimal calcularCosto(decimal costo)
+        {
+            int descuento = 2;
+            decimal costoTotal = 0;
+            
+            int antiguedad = DateTime.Now.Year - this.Anio;
+            decimal descuentoTotal = antiguedad * descuento;
+
+            if (descuentoTotal > 20)
+            {
+                descuentoTotal = 20;
+            }
+
+            if(antiguedad > 0)
+            {
+                costoTotal = costo - (100 / (descuentoTotal * costo));
+            }
+            else
+            {
+                costoTotal = costo;
+            }
+
+            return costoTotal;
+        }
+
     }
 }

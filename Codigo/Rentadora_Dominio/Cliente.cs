@@ -34,6 +34,7 @@ namespace Rentadora_Dominio
         }
 
         public abstract bool verificarDocumento(int doc);
+        public abstract decimal calcularCosto(decimal costo);
 
     }
 }
