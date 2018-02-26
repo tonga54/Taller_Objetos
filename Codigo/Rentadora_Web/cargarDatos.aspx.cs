@@ -14,8 +14,9 @@ namespace Rentadora_Web
         {
             if (!IsPostBack)
             {
-                Rentadora.Instancia.cargarTiposVehiculos();
+                Rentadora.Instancia.preCargarDatos();
             }
         }
+
     }
 }

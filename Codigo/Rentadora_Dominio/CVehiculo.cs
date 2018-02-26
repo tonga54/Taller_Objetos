@@ -8,7 +8,7 @@ namespace Rentadora_Dominio
 {
     public class CVehiculo
     {
-        private List<Vehiculo> vehiculos;
+        private List<Vehiculo> vehiculos = new List<Vehiculo>();
         private static CVehiculo instancia = null;
 
         public static CVehiculo Instancia
@@ -20,6 +20,15 @@ namespace Rentadora_Dominio
                     CVehiculo.instancia = new CVehiculo();
                 }
                 return CVehiculo.instancia;
+            }
+        }
+
+
+        public List<Vehiculo> Vehiculos //BORRAR CUANDO SE TERMINE IMPLEMENTACION DE ALQUILER
+        {
+            get
+            {
+                return this.vehiculos;
             }
         }
 
@@ -43,6 +52,12 @@ namespace Rentadora_Dominio
             }
 
             return vehiculosAux;
+        }
+
+        public void cargarVehiculos(string matricula, DateTime anio, decimal kilometraje, List<string> fotos, TipoVehiculo tipoVehiculo)
+        {
+            Vehiculo veh = new Vehiculo(matricula,anio,kilometraje,fotos,tipoVehiculo);
+            this.vehiculos.Add(veh);
         }
 
     }

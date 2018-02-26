@@ -105,23 +105,35 @@ namespace Rentadora_Dominio
             return vehiculosDisponibles;
         }*/
 
-        public List<string> buscarVehiculoDisponibleXFecha(DateTime fechaInicio, DateTime fechaFin, string modelo)
+        
+        public List<Vehiculo> buscarVehiculoDisponibleXFecha(DateTime fechaInicio, DateTime fechaFin, string modelo)
         {
-            List<string> devolucion = null;
-            for(int i = 0; i < alquileres.Count; i++)
-            {
-                if (alquileres[i].modeloVehiculo() == modelo)
+            List<Vehiculo> devolucion = null;
+                for(int i = 0; i < alquileres.Count; i++)
                 {
-                    if (alquileres[i].FechaIni < fechaFin && alquileres[i].FechaIni < fechaInicio) {
-                        devolucion.Add(alquileres[i].matriculaVehiculo());
-                    }
-                    else if (alquileres[i].FechaFin > fechaFin && alquileres[i].FechaFin > fechaInicio)
+                    if (alquileres[i].modeloVehiculo() == modelo)
                     {
-                        devolucion.Add(alquileres[i].matriculaVehiculo());
+                        if (alquileres[i].FechaIni < fechaFin && alquileres[i].FechaIni < fechaInicio) {
+                            devolucion.Add(alquileres[i].Vehiculo);
+                        }
+                        else if (alquileres[i].FechaFin > fechaFin && alquileres[i].FechaFin > fechaInicio)
+                        {
+                            devolucion.Add(alquileres[i].Vehiculo);
+                        }
                     }
                 }
-            }
+
+            devolucion = CVehiculo.Instancia.Vehiculos; // BORRAR CUANDO SE TERMINE IMPLEMENTACION DE ALQUILER
             return devolucion;
+        }
+
+
+        public bool verificarFecha(DateTime d1, DateTime d2)
+        {
+            bool devolucion = false;
+            
+
+            return false;
         }
 
     }

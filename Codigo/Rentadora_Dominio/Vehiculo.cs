@@ -15,6 +15,35 @@ namespace Rentadora_Dominio
         private TipoVehiculo tipoVehiculo;
         private bool disponible;
 
+        public decimal Kilometraje
+        {
+            get
+            {
+                return this.kilometraje;
+            }
+        }
+
+        public DateTime Anio
+        {
+            get
+            {
+                return this.anio;
+            }
+        }
+
+        public string Fotos
+        {
+            get
+            {
+                string devolucion = null;
+                for (int i = 0; i < this.fotos.Count; i++)
+                {
+                    devolucion += "<img src='" + this.fotos[i] + "'>";
+                }
+                return devolucion;
+            }
+        }
+
         public TipoVehiculo TipoVehiculo
         {
             get
@@ -43,6 +72,14 @@ namespace Rentadora_Dominio
             }
         }
 
+        public Vehiculo(string matricula,DateTime anio, decimal kilometraje,List<string> fotos, TipoVehiculo tipoVehiculo)
+        {
+            this.matricula = matricula;
+            this.anio = anio;
+            this.kilometraje = kilometraje;
+            this.fotos = fotos;
+            this.tipoVehiculo = tipoVehiculo;
+        }
 
         public string modelo()
         {

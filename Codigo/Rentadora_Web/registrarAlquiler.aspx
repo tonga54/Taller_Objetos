@@ -22,8 +22,18 @@
     <asp:DropDownList ID="ddlModelo" runat="server" ValidationGroup="registrarAlquiler" AutoPostBack="True" OnSelectedIndexChanged="ddlModelo_SelectedIndexChanged" ></asp:DropDownList>
 
     <asp:Label ID="Label4" runat="server" Text="Coches"></asp:Label>
-    <asp:DropDownList ID="ddlMatricula" runat="server" ValidationGroup="registrarAlquiler">
-    </asp:DropDownList>
+    <br />
+
+    <asp:GridView ID="grdVehiculos" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="grdVehiculos_SelectedIndexChanged" OnSelectedIndexChanging="grdVehiculos_SelectedIndexChanging">
+        <Columns>
+            
+          <asp:BoundField DataField="matricula" HeaderText="Matricula" />
+            <asp:BoundField DataField="anio" HeaderText="Anio" />
+            <asp:BoundField DataField="kilometraje" HeaderText="Kilometraje" />
+            <asp:BoundField DataField="Fotos" HeaderText="Fotos" HtmlEncode="False" HtmlEncodeFormatString="False" />
+            <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
+        </Columns>
+    </asp:GridView>
 
     <asp:Label ID="Label15" runat="server" Text="Hora inicio"></asp:Label>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtHoraInicio" ErrorMessage="Hora de inicio vacia" Display="Dynamic" ValidationGroup="registrarAlquiler">*</asp:RequiredFieldValidator>

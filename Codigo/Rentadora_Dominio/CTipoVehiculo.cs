@@ -28,6 +28,14 @@ namespace Rentadora_Dominio
 
         }
 
+        public List<TipoVehiculo> TipoVehiculos
+        {
+            get
+            {
+                return this.tiposVehiculos;
+            }
+        }
+
         public List<string> listarMarcas()
         {
             List<string> devolucion = new List<string>();

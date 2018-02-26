@@ -200,8 +200,9 @@ form input[type="submit"]{
 
 #form img{
     width:50%;
-    margin: 20px auto 0px auto;
-    display:block;
+    /*margin: 20px auto 0px auto;*/
+    margin: 0px !important;
+    display:inline-block !important;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;

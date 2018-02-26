@@ -92,9 +92,9 @@ namespace Rentadora_Aplicacion
             
         }
 
-        public List<string> buscarVehiculoDisponible(DateTime fechaInicio, DateTime fechaFin, string modelo)
+        public List<Vehiculo> buscarVehiculoDisponible(DateTime fechaInicio, DateTime fechaFin, string modelo)
         {
-            List<string> devolucion = CAlquiler.Instancia.buscarVehiculoDisponibleXFecha(fechaInicio, fechaFin, modelo);
+            List<Vehiculo> devolucion = CAlquiler.Instancia.buscarVehiculoDisponibleXFecha(fechaInicio, fechaFin, modelo);
             return devolucion;
         }
 
@@ -108,12 +108,31 @@ namespace Rentadora_Aplicacion
            return CTipoVehiculo.Instancia.listarModelos(marca);
         }
 
-        public void cargarTiposVehiculos()
+        public bool cargarTIposVehiculos(string modelo, string marca, decimal precioDiario)
         {
-            CTipoVehiculo.Instancia.cargarTipos("Chevrolet","Corsa",400);
-            CTipoVehiculo.Instancia.cargarTipos("Volskwagen", "C4",500);
-            CTipoVehiculo.Instancia.cargarTipos("Chevrolet", "V4",200);
+            CTipoVehiculo.Instancia.cargarTipos(modelo, marca, precioDiario);
+            return false; // cambiar
         }
+
+        public bool cargarVehiculos(string matricula, DateTime anio, decimal kilometraje,List<string> fotos, TipoVehiculo tipoVehiculo)
+        {
+            CVehiculo.Instancia.cargarVehiculos(matricula, anio, kilometraje, fotos, tipoVehiculo);
+            return false; // cambiar
+        }
+
+        public void preCargarDatos()
+        {
+            Rentadora.instancia.cargarTIposVehiculos("Chevrolet", "Corsa", 400);
+            Rentadora.instancia.cargarTIposVehiculos("Volskwagen", "C4", 500);
+            Rentadora.instancia.cargarTIposVehiculos("Chevrolet", "V4", 200);
+
+            List<string> img = new List<string> { "img/1.jpeg", "img/2.jpeg", "img/3.jpeg" };
+            CVehiculo.Instancia.cargarVehiculos("CXX-4872", new DateTime(), 15000, img, CTipoVehiculo.Instancia.TipoVehiculos[0]);
+
+            img = new List<string> { "img/4.jpeg", "img/5.jpeg", "img/6.jpeg" };
+            CVehiculo.Instancia.cargarVehiculos("CXX-4872", new DateTime(), 15000, img, CTipoVehiculo.Instancia.TipoVehiculos[1]);
+        }
+
 
     }
 
