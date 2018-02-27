@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Rentadora_Dominio
 {
-    public class CAlquiler
+
+    [Serializable]
+
+    public class CAlquiler: ISerializable
     {
         private List<Alquiler> alquileres = new List<Alquiler>();
         private static CAlquiler instancia = null;
@@ -51,13 +55,13 @@ namespace Rentadora_Dominio
 
         }
 
-        public Alquiler buscarAlquiler(string matricula)
+        public Alquiler buscarAlquiler(Vehiculo vehiculo)
         {
             int i = 0;
             Alquiler alq = null;
             while (i < alquileres.Count && alq == null)
             {
-                if(alquileres[i].matriculaVehiculo() == matricula)
+                if(alquileres[i].Vehiculo.Equals(vehiculo))
                 {
                     alq = alquileres[i];
                 }
@@ -66,9 +70,9 @@ namespace Rentadora_Dominio
 
         }
 
-        public bool devolverVehiculo(string matricula)
+        public bool devolverVehiculo(Vehiculo vehiculo)
         {
-            Alquiler alq = buscarAlquiler(matricula);
+            Alquiler alq = buscarAlquiler(vehiculo);
             bool devolucion = false;
             if (alq != null)
             {
@@ -76,35 +80,6 @@ namespace Rentadora_Dominio
             }
             return devolucion;
         }
-
-
-        /*public List<Vehiculo> buscarVehiculosDisponibles(DateTime fechaIni, DateTime fechaFin, string marca, string modelo)
-        {
-            int i = 0;
-            int j = 0;
-            List<Vehiculo> vehiculosDisponibles = new List<Vehiculo>();
-            List<Vehiculo> vehiculosAux = new List<Vehiculo>();
-
-            vehiculosAux = CVehiculo.Instancia.buscarVehiculo(marca, modelo);
-
-            while (i < alquileres.Count)
-            {
-                while(j < vehiculosAux.Count)
-                {
-                    if (alquileres[i].Vehiculo != vehiculosAux[j] && fechaIni < alquileres[i].FechaIni && fechaFin < alquileres[i].FechaFin)
-                    {
-                        vehiculosDisponibles.Add(vehiculosAux[j]);
-                    }
-                }
-                j++;
-                
-            i++;
-            }
-
-
-            return vehiculosDisponibles;
-        }*/
-
         
         public List<Vehiculo> buscarVehiculoDisponibleXFecha(DateTime fechaInicio, DateTime fechaFin, string modelo)
         {
@@ -134,6 +109,11 @@ namespace Rentadora_Dominio
             
 
             return false;
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            throw new NotImplementedException();
         }
 
     }

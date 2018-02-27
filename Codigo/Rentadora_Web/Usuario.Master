@@ -24,8 +24,8 @@
         </header>
         <nav>
            <ul>
-                <li><a href="inicioOrganizador.aspx"><span class="icon-home"> </span><span class="info">Inicio</span></a></li>
-                <li><a href="registrarAlquiler.aspx"><span class="icon-database"> </span><span class="info">Registrar clientes</span></a></li>
+                <li><a href="inicio.aspx"><span class="icon-home"> </span><span class="info">Inicio</span></a></li>
+                <li><a href="registrarAlquiler.aspx"><span class="icon-database"> </span><span class="info">Registrar alquiler</span></a></li>
                 <li><a href="registrarAlquiler.aspx"><span class="icon-list2"> </span><span class="info">Listado vehiculos retrasados</span></a></li> 
                 <li><a href="eventosOrganizador.aspx"><span class="icon-profile"> </span><span class="info">Devolucion de vehiculos</span></a></li>
                 <!--<li><a href="agregarServiciosAEvento.aspx"><span class="icon-profile"> </span><span class="info">Listado vehiculos retrasados</span></a></li>-->

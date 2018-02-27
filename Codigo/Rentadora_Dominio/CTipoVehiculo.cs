@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Rentadora_Dominio
 {
+
+    //[Serializable]
+
     public class CTipoVehiculo
     {
         private List<TipoVehiculo> tiposVehiculos = new List<TipoVehiculo>();

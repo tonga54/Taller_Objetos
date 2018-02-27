@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Rentadora_Dominio
 {
+
+    //[Serializable]
+
     public class CVehiculo
     {
         private List<Vehiculo> vehiculos = new List<Vehiculo>();
@@ -52,6 +55,22 @@ namespace Rentadora_Dominio
             }
 
             return vehiculosAux;
+        }
+
+        public Vehiculo buscarVehiculoXMatricula(string matricula)
+        {
+            int i = 0;
+            Vehiculo veh = null;
+            while(i < vehiculos.Count && veh == null)
+            {
+                if(vehiculos[i].Matricula == matricula)
+                {
+                    veh = vehiculos[i];
+                }
+                i++;
+            }
+
+            return veh;
         }
 
         public void cargarVehiculos(string matricula, DateTime anio, decimal kilometraje, List<string> fotos, TipoVehiculo tipoVehiculo)

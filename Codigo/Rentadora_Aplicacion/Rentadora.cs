@@ -75,19 +75,31 @@ namespace Rentadora_Aplicacion
 
         }
 
-        public Alquiler buscarAlquiler(string matricula)
+        public Vehiculo buscarVehiculoXMatricula(string matricula)
         {
-            Alquiler alq= CAlquiler.Instancia.buscarAlquiler(matricula);
+            Vehiculo veh = CVehiculo.Instancia.buscarVehiculoXMatricula(matricula);
+            return veh;
+        }
+
+        public Alquiler buscarAlquiler(Vehiculo veh)
+        {
+            Alquiler alq= CAlquiler.Instancia.buscarAlquiler(veh);
             return alq;
         }
 
         public bool devolverVehiculo(string matricula)
         {
-            bool devolucion = CAlquiler.Instancia.devolverVehiculo(matricula);
+            Vehiculo veh = buscarVehiculoXMatricula(matricula);
+            bool devolucion = false;
+            if(veh != null)
+            {
+                devolucion = CAlquiler.Instancia.devolverVehiculo(veh);
+            }
+
             return devolucion;
         }
 
-        public void alquilarVehiculo(DateTime fechaIni, DateTime fechaFin, string marca, string modelo)
+        public void alquilarVehiculo(DateTime fechaIni, DateTime fechaFin, DateTime horaIni, DateTime horaFIn, string matricula)
         {
             
         }

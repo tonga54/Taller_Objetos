@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Rentadora_Dominio
 {
+    //[Serializable]
+
     public class CCliente
     {
         private List<Cliente> clientes;

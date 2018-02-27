@@ -22,6 +22,7 @@ namespace Rentadora_Web
                 ddlModelo.Enabled = false;
                 grdVehiculos.Visible = false;
                 Label4.Visible = false;
+
                 string matricula = Request.QueryString["matricula"];
                 string fechaInicio = Request.QueryString["fini"];
                 string fechaFin = Request.QueryString["ffin"];
@@ -30,8 +31,10 @@ namespace Rentadora_Web
                 {
                     Label1.Visible = false;
                     txtFechaInicio.Visible = false;
+                    txtFechaInicio.Text = fechaInicio;
                     Label7.Visible = false;
                     txtFechaFin.Visible = false;
+                    txtFechaFin.Text = fechaFin;
                     Label9.Visible = false;
                     ddlMarca.Visible = false;
                     Label2.Visible = false;

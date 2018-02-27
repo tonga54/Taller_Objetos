@@ -10,8 +10,8 @@ namespace Rentadora_Dominio
     {
         private DateTime fechaIni;
         private DateTime fechaFin;
-        private DateTime horaIni;
-        private DateTime horaFin;
+        private int horaIni;
+        private int horaFin;
         private Vehiculo vehiculo;
         private Cliente cliente;
         private decimal monto;
