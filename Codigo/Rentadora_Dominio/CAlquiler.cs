@@ -61,7 +61,7 @@ namespace Rentadora_Dominio
             int i = 0;
             while(i < alquileres.Count && alq == null)
             {
-                if (alquileres[i].Vehiculo.Equals(veh) && !alquileres[i].vehiculoDisponible())
+                if (alquileres[i].Vehiculo.Equals(veh) && !alquileres[i].disponibilidadVehiculo())
                 {
                     alq = alquileres[i];
                 }
@@ -94,6 +94,23 @@ namespace Rentadora_Dominio
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             throw new NotImplementedException();
+        }
+
+        public List<string> buscarMatriculasXCliente(Cliente cli)
+        {
+            List<string> matriculas = new List<string>();
+            for(int i = 0; i < alquileres.Count; i++)
+            {
+                if (alquileres[i].Cliente.Equals(cli))
+                {
+                    if (!alquileres[i].disponibilidadVehiculo())
+                    {
+                        matriculas.Add(alquileres[i].matriculaVehiculo());
+                    }
+                }
+            }
+
+            return matriculas;
         }
 
     }

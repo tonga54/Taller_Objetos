@@ -142,7 +142,7 @@ namespace Rentadora_Dominio
             return costoFinal;
         }
 
-        public bool vehiculoDisponible()
+        public bool disponibilidadVehiculo()
         {
             return this.vehiculo.Disponible;
         }

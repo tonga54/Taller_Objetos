@@ -250,6 +250,19 @@ namespace Rentadora_Aplicacion
             return devolucion;
         }
 
+        public List<string> buscarMatriculasXCliente(int documento)
+        {
+            List<string> devolucion = null;
+            Cliente cli = CCliente.Instancia.buscarCliente(documento);
+            if(cli != null)
+            {
+                devolucion = CAlquiler.Instancia.buscarMatriculasXCliente(cli);
+            }
+
+            return devolucion;
+
+        }
+
         public string alquilarVehiculo(DateTime fechaIni, DateTime fechaFin, int horaIni, int horaFIn, string matricula,int documento)
         {
             Vehiculo veh = CVehiculo.Instancia.comprobarDisponibilidad(matricula);

@@ -122,9 +122,11 @@
     <Content Include="css\style %282%29.css" />
     <Content Include="css\style.css" />
     <Content Include="css\system.css" />
+    <Content Include="devolverVehiculo.aspx" />
     <Content Include="fonts\icomoon.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.aspx" />
+    <Content Include="inicio.aspx" />
     <Content Include="js\index.js" />
     <Content Include="js\validation.js" />
     <Content Include="listadoVehiculosRetrasados.aspx" />
@@ -162,6 +164,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="devolverVehiculo.aspx.cs">
+      <DependentUpon>devolverVehiculo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="devolverVehiculo.aspx.designer.cs">
+      <DependentUpon>devolverVehiculo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -171,6 +180,13 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inicio.aspx.cs">
+      <DependentUpon>inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inicio.aspx.designer.cs">
+      <DependentUpon>inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="listadoVehiculosRetrasados.aspx.cs">
       <DependentUpon>listadoVehiculosRetrasados.aspx</DependentUpon>
