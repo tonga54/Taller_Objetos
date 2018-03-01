@@ -34,7 +34,7 @@ namespace Rentadora_Dominio
 
         public List<Alquiler> listadoVehiculosRetrasados()
         {
-            List<Alquiler> vehiculosRetrasados = null;
+            List<Alquiler> vehiculosRetrasados = new List<Alquiler>();
             for(int i = 0; i < alquileres.Count; i++)
             {
                 if (alquileres[i].verificarRetraso())
@@ -55,60 +55,40 @@ namespace Rentadora_Dominio
 
         }
 
-        public Alquiler buscarAlquiler(Vehiculo vehiculo)
+        public Alquiler buscarAlquiler(Vehiculo veh)
         {
-            int i = 0;
             Alquiler alq = null;
-            while (i < alquileres.Count && alq == null)
+            int i = 0;
+            while(i < alquileres.Count && alq == null)
             {
-                if(alquileres[i].Vehiculo.Equals(vehiculo))
+                if (alquileres[i].Vehiculo.Equals(veh) && !alquileres[i].vehiculoDisponible())
                 {
                     alq = alquileres[i];
                 }
-            }
-            return alq;
 
+                i++;
+            }
+            
+            return alq;
         }
 
-        public bool devolverVehiculo(Vehiculo vehiculo)
+        public bool devolverVehiculo(Vehiculo veh)
         {
-            Alquiler alq = buscarAlquiler(vehiculo);
+            Alquiler alq = buscarAlquiler(veh);
             bool devolucion = false;
+
             if (alq != null)
             {
                 devolucion = alq.devolverVehiculo();
             }
+
             return devolucion;
         }
         
-        public List<Vehiculo> buscarVehiculoDisponibleXFecha(DateTime fechaInicio, DateTime fechaFin, string modelo)
+        public void registrarAlquiler(Cliente cliente, Vehiculo vehiculo, int horaInicio, int horaFin, DateTime fechaInicio, DateTime fechaFin)
         {
-            List<Vehiculo> devolucion = null;
-                for(int i = 0; i < alquileres.Count; i++)
-                {
-                    if (alquileres[i].modeloVehiculo() == modelo)
-                    {
-                        if (alquileres[i].FechaIni < fechaFin && alquileres[i].FechaIni < fechaInicio) {
-                            devolucion.Add(alquileres[i].Vehiculo);
-                        }
-                        else if (alquileres[i].FechaFin > fechaFin && alquileres[i].FechaFin > fechaInicio)
-                        {
-                            devolucion.Add(alquileres[i].Vehiculo);
-                        }
-                    }
-                }
-
-            devolucion = CVehiculo.Instancia.Vehiculos; // BORRAR CUANDO SE TERMINE IMPLEMENTACION DE ALQUILER
-            return devolucion;
-        }
-
-
-        public bool verificarFecha(DateTime d1, DateTime d2)
-        {
-            bool devolucion = false;
-            
-
-            return false;
+            Alquiler alq = new Alquiler(cliente, vehiculo, horaInicio, horaFin, fechaInicio, fechaFin);
+            alquileres.Add(alq);
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

@@ -14,17 +14,31 @@ namespace Rentadora_Web
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            string rutaArchivo = HttpRuntime.AppDomainAppPath + @"binario\serial.bin";
+            string serializado = HttpRuntime.AppDomainAppPath + @"binario\serial.bin";
+            string vehiculos = HttpRuntime.AppDomainAppPath + @"bitacoras\vehiculos.txt";
+            string tiposVehiculos = HttpRuntime.AppDomainAppPath + @"bitacoras\tiposVehiculos.txt";
+            Rentadora.Instancia.preCargarDatos();
 
 
-            if (File.Exists(rutaArchivo))
+            /*if (File.Exists(serializado))
             {
-                Repositorio rep = new Repositorio(rutaArchivo);
+                Repositorio rep = new Repositorio(serializado);
                 rep.Deserealizable();
             }else
             {
-                Rentadora.Instancia.preCargarDatos();
+                //Rentadora.Instancia.preCargarDatos();
             }
+            */
+
+            if (File.Exists(vehiculos))
+            {
+                Rentadora.Instancia.leerDatosVehiculos(vehiculos);
+            }else
+            {
+
+            }
+
+            Rentadora.Instancia.preCargarAlquileres();
 
         }
 

@@ -42,12 +42,11 @@
         <form method="post" class="login" runat="server">
             <span class="loginTitle" id="loginTitle">Iniciar Sesion</span>
             <!-- <label for=txtUser"">Usuario</label> -->
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtUser" ErrorMessage="Email requerido">*</asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtUser" ErrorMessage="Formato email invalido" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">*</asp:RegularExpressionValidator>
-                <asp:TextBox ID="txtUser" runat="server" ToolTip="Usuario" TextMode="Email" PlaceHolder="Email"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtUser" ErrorMessage="Nombre de usuario requerido">*</asp:RequiredFieldValidator>
+                <asp:TextBox ID="txtUser" runat="server" ToolTip="Usuario" PlaceHolder="Email"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtPassword" ErrorMessage="Password requerido">*</asp:RequiredFieldValidator>
                 <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" ToolTip="Contraseña" PlaceHolder="Password"></asp:TextBox>
-                <asp:Button ID="btnIngresar" runat="server" Text="Ingregar" OnClientClick="return validar();"/>
+                <asp:Button ID="btnIngresar" runat="server" Text="Ingregar" OnClick="btnIngresar_Click"/>
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
                 <a href="registro.aspx" id="register" class="register">No tienes una cuenta? Registrate</a>
 

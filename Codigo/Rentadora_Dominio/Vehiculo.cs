@@ -9,7 +9,7 @@ namespace Rentadora_Dominio
     public class Vehiculo
     {
         private string matricula;
-        private DateTime anio;
+        private int anio;
         private decimal kilometraje;
         private List<string> fotos;
         private TipoVehiculo tipoVehiculo;
@@ -23,7 +23,7 @@ namespace Rentadora_Dominio
             }
         }
 
-        public DateTime Anio
+        public int Anio
         {
             get
             {
@@ -72,13 +72,14 @@ namespace Rentadora_Dominio
             }
         }
 
-        public Vehiculo(string matricula,DateTime anio, decimal kilometraje,List<string> fotos, TipoVehiculo tipoVehiculo)
+        public Vehiculo(string matricula,int anio, decimal kilometraje,List<string> fotos, TipoVehiculo tipoVehiculo)
         {
             this.matricula = matricula;
             this.anio = anio;
             this.kilometraje = kilometraje;
             this.fotos = fotos;
             this.tipoVehiculo = tipoVehiculo;
+            this.disponible = true;
         }
 
         public string modelo()

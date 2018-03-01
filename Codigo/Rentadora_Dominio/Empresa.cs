@@ -8,17 +8,9 @@ namespace Rentadora_Dominio
 {
     public class Empresa : Cliente
     {
-        private int rut;
         private string razonSocial;
-        private string nombre;
-        
-        public int Rut
-        {
-            get
-            {
-                return this.rut;
-            }
-        }
+        private int rut;
+        private int anio;
 
         public string RazonSocial
         {
@@ -36,11 +28,19 @@ namespace Rentadora_Dominio
             }
         }
 
-        public Empresa(int telefono, int rut, string razonSocial, string nombre) : base(telefono)
+        public int Documento
+        {
+            get
+            {
+                return this.rut;
+            }
+        }
+
+        public Empresa(int telefono, int rut, string razonSocial, string nombre, int anio) : base(nombre,telefono)
         {
             this.rut = rut;
             this.razonSocial = razonSocial;
-            this.nombre = nombre;
+            this.anio = anio;
         }
 
         public override bool verificarDocumento(int doc)
@@ -58,17 +58,16 @@ namespace Rentadora_Dominio
         {
             int descuento = 2;
             decimal costoTotal = 0;
-            
-            int antiguedad = DateTime.Now.Year - this.Anio;
-            decimal descuentoTotal = antiguedad * descuento;
 
-            if (descuentoTotal > 20)
+            int antiguedad = DateTime.Now.Year - this.anio;
+            decimal descuentoTotal = 0;
+            if (antiguedad > 0)
             {
-                descuentoTotal = 20;
-            }
-
-            if(antiguedad > 0)
-            {
+                descuentoTotal = antiguedad * descuento;
+                if (descuentoTotal > 20)
+                {
+                    descuentoTotal = 20;
+                }
                 costoTotal = costo - (100 / (descuentoTotal * costo));
             }
             else

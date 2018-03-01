@@ -90,5 +90,23 @@ namespace Rentadora_Dominio
             return devolucion;
         }
 
+        public TipoVehiculo buscarTipoVehiculo(string marca, string modelo)
+        {
+            int i = 0;
+            TipoVehiculo tipoVeh = null;
+            while (i < tiposVehiculos.Count && tipoVeh == null)
+            {
+                if(tiposVehiculos[i].Marca == marca && tiposVehiculos[i].Modelo == modelo)
+                {
+                    tipoVeh = tiposVehiculos[i];
+                }
+
+                i++;
+            }
+
+            return tipoVeh;
+
+        }
+
     }
 }

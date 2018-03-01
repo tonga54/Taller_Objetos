@@ -14,13 +14,28 @@ namespace Rentadora_Dominio
         private int horaFin;
         private Vehiculo vehiculo;
         private Cliente cliente;
-        private decimal monto;
 
         public Vehiculo Vehiculo
         {
             get
             {
-                return this.Vehiculo;
+                return this.vehiculo;
+            }
+        }
+
+        public string FechaIniCorta
+        {
+            get
+            {
+                return this.fechaIni.ToShortDateString();
+            }
+        }
+
+        public string FechaFinCorta
+        {
+            get
+            {
+                return this.fechaFin.ToShortDateString();
             }
         }
 
@@ -40,11 +55,54 @@ namespace Rentadora_Dominio
             }
         }
 
+        public int HoraIni
+        {
+            get
+            {
+                return this.horaIni;
+            }
+        }
+
+        public int HoraFin
+        {
+            get
+            {
+                return this.horaFin;
+            }
+        }
+
+        public Cliente Cliente
+        {
+            get
+            {
+                return this.cliente;
+            }
+        }
+
+        public Decimal Monto
+        {
+            get
+            {
+                return this.calcularCosto();
+            }
+        }
+
+        public Alquiler(Cliente cliente, Vehiculo vehiculo, int horaInicio, int horaFin, DateTime fechaInicio, DateTime fechaFin)
+        {
+            this.cliente = cliente;
+            this.vehiculo = vehiculo;
+            this.horaIni = horaInicio;
+            this.horaFin = horaFin;
+            this.fechaIni = fechaInicio;
+            this.fechaFin = fechaFin;
+            this.vehiculo.Disponible = false;
+        }
+
         public bool verificarRetraso()
         {
             DateTime fechaActual = DateTime.Now;
             bool devolucion = false;
-            if (fechaActual > this.fechaFin)
+            if (fechaActual > this.fechaFin && !Vehiculo.Disponible)
             {
                 devolucion = true;
             }
@@ -70,24 +128,24 @@ namespace Rentadora_Dominio
 
         public decimal montoFaltante()
         {
-            //decimal costoTipoVehiculo = this.vehiculo.costoTipoVehiculo();
-            //int cantidadDiasExtra = DateTime.Now.Day - this.fechaFin.Day;
             TimeSpan cantidadDiasExtra = DateTime.Now.Subtract(fechaFin);
             decimal costoBase = cantidadDiasExtra.Days * Vehiculo.costoTipoVehiculo();
-            //decimal costo = costoBase * CALCULO DE COSTO POLIMORFICO;
-            return costoBase;
+            decimal costoFinal = cliente.calcularCosto(costoBase);
+            return costoFinal;
         }
 
         public decimal calcularCosto()
         {
-            //decimal costoTipoVehiculo = this.vehiculo.costoTipoVehiculo();
-            //int cantidadDias = this.fechaFin.Day - this.fechaIni.Day;
             TimeSpan cantidadDias = fechaFin.Subtract(fechaIni);
-            //decimal costoBase = costoTipoVehiculo * cantidadDias;
             decimal costoBase = cantidadDias.Days * Vehiculo.costoTipoVehiculo();
-            //decimal costo = costoBase * CALCULO DE COSTO POLIMORFICO;
-            //this.monto = costoBase;
-            return costoBase;
+            decimal costoFinal = cliente.calcularCosto(costoBase);
+            return costoFinal;
         }
+
+        public bool vehiculoDisponible()
+        {
+            return this.vehiculo.Disponible;
+        }
+
     }
 }

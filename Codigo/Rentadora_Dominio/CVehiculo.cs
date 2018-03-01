@@ -40,14 +40,32 @@ namespace Rentadora_Dominio
 
         }
 
-        public List<Vehiculo> buscarVehiculo(string marca, string modelo)
+        public Vehiculo comprobarDisponibilidad(string matricula)
+        {
+            int i = 0;
+            Vehiculo retorno = null;
+
+            while(i < vehiculos.Count && retorno == null)
+            {
+                if(vehiculos[i].Matricula == matricula && vehiculos[i].Disponible)
+                {
+                    retorno = vehiculos[i];
+                }
+
+                i++;
+            }
+
+            return retorno;
+        }
+
+        public List<Vehiculo> vehiculosDisponibles(string marca, string modelo)
         {
             int i = 0;
             List<Vehiculo> vehiculosAux = new List<Vehiculo>();
 
             while (i < vehiculos.Count)
             {
-                if (vehiculos[i].TipoVehiculo.Marca == marca && vehiculos[i].TipoVehiculo.Modelo == modelo)
+                if (vehiculos[i].TipoVehiculo.Marca == marca && vehiculos[i].TipoVehiculo.Modelo == modelo && vehiculos[i].Disponible)
                 {
                     vehiculosAux.Add(vehiculos[i]);
                 }
@@ -73,7 +91,7 @@ namespace Rentadora_Dominio
             return veh;
         }
 
-        public void cargarVehiculos(string matricula, DateTime anio, decimal kilometraje, List<string> fotos, TipoVehiculo tipoVehiculo)
+        public void cargarVehiculos(string matricula, int anio, decimal kilometraje, List<string> fotos, TipoVehiculo tipoVehiculo)
         {
             Vehiculo veh = new Vehiculo(matricula,anio,kilometraje,fotos,tipoVehiculo);
             this.vehiculos.Add(veh);

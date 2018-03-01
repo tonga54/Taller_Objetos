@@ -8,19 +8,10 @@ namespace Rentadora_Dominio
 {
     public class Particular : Cliente
     {
-        private int documento;
         private int tipoDocumento;
+        private int documento;
         private string pais;
-        private string nombre;
         private string apellido;
-
-        public int Documento
-        {
-            get
-            {
-                return this.Documento;
-            }
-        }
 
         public int TipoDocumento
         {
@@ -54,12 +45,19 @@ namespace Rentadora_Dominio
             }
         }
 
-        public Particular(int telefono, int documento, int tipoDocumento, string pais, string nombre, string apellido) : base(telefono)
+        public int Documento
+        {
+            get
+            {
+                return this.documento;
+            }
+        }
+
+        public Particular(int telefono, int documento, int tipoDocumento, string pais, string nombre, string apellido) : base(nombre,telefono)
         {
             this.documento = documento;
             this.tipoDocumento = tipoDocumento;
             this.pais = pais;
-            this.nombre = nombre;
             this.apellido = apellido;
         }
 

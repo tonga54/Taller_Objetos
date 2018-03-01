@@ -11,7 +11,7 @@ namespace Rentadora_Dominio
 
     public class CUsuario
     {
-        private List<Usuario> usuarios;
+        private List<Usuario> usuarios = new List<Usuario>();
         private static CUsuario instancia = null;
 
         public static CUsuario Instancia
@@ -31,7 +31,7 @@ namespace Rentadora_Dominio
 
         }
 
-        public bool registrarUsuario(string nombre,string contrasenia, int rol)
+        public bool registrarUsuario(string nombre,string contrasenia, string rol)
         {
             bool devolucion = false;
             bool usr = buscarUsuario(nombre);
@@ -78,6 +78,16 @@ namespace Rentadora_Dominio
 
             return usr;
 
+        }
+
+        public string nombre(Usuario usu)
+        {
+            return usu.Nombre;
+        }
+
+        public string rol(Usuario usu)
+        {
+            return usu.Rol;
         }
 
     }

@@ -11,7 +11,7 @@ namespace Rentadora_Web {
     
     
     public partial class index {
-
+        
         /// <summary>
         /// Control RequiredFieldValidator6.
         /// </summary>
@@ -20,16 +20,7 @@ namespace Rentadora_Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
-
-        /// <summary>
-        /// Control RegularExpressionValidator2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
-
+        
         /// <summary>
         /// Control txtUser.
         /// </summary>
@@ -38,7 +29,7 @@ namespace Rentadora_Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUser;
-
+        
         /// <summary>
         /// Control RequiredFieldValidator7.
         /// </summary>
@@ -47,7 +38,7 @@ namespace Rentadora_Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
-
+        
         /// <summary>
         /// Control txtPassword.
         /// </summary>
@@ -56,7 +47,7 @@ namespace Rentadora_Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
-
+        
         /// <summary>
         /// Control btnIngresar.
         /// </summary>
@@ -65,7 +56,7 @@ namespace Rentadora_Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnIngresar;
-
+        
         /// <summary>
         /// Control ValidationSummary1.
         /// </summary>
@@ -74,7 +65,7 @@ namespace Rentadora_Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
-
+        
         /// <summary>
         /// Control lblEstado.
         /// </summary>

@@ -10,7 +10,7 @@ namespace Rentadora_Dominio
 
     public class CCliente
     {
-        private List<Cliente> clientes;
+        private List<Cliente> clientes = new List<Cliente>();
         private static CCliente instancia = null;
 
         public static CCliente Instancia
@@ -44,10 +44,10 @@ namespace Rentadora_Dominio
         }
 
         //Empresa
-        public bool agregarCliente(int telefono, int rut, string razonSocial, string nombre)
+        public bool agregarCliente(int telefono, int rut, string razonSocial, string nombre, int anio)
         {
             bool devolucion = false;
-            Empresa emp = new Empresa(telefono, rut, razonSocial, nombre);
+            Empresa emp = new Empresa(telefono, rut, razonSocial, nombre,anio);
             if(emp != null)
             {
                 clientes.Add(emp);
@@ -66,10 +66,25 @@ namespace Rentadora_Dominio
                     encontrado = true;
                 }
             }
-            return encontrado;
 
+            return encontrado;
         }
 
+        public Cliente buscarCliente(int documento)
+        {
+            int i = 0;
+            Cliente cl = null;
+            while (i < clientes.Count && cl == null)
+            {
+                if(clientes[i].verificarDocumento(documento))
+                {
+                    cl = clientes[i];
+                }
+                i++;
+            }
+            return cl;
+
+        }
 
     }
 }

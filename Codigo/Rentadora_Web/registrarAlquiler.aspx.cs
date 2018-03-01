@@ -13,60 +13,100 @@ namespace Rentadora_Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["rol"].ToString() != "vendedor" && Session["rol"].ToString() != "administrador")
+            {
+                Session.Clear();
+                Response.Redirect("index.aspx");
+            }
+
             if (!IsPostBack)
             {
-                ddlMarca.DataSource = Rentadora.Instancia.listarMarcas();
-                ddlMarca.DataBind();
-                ddlMarca.Items.Insert(0, new ListItem("-- Seleccione una marca --", "0"));
-                ddlModelo.Items.Insert(0, new ListItem("-- Seleccione un modelo --", "0"));
-                ddlModelo.Enabled = false;
-                grdVehiculos.Visible = false;
-                Label4.Visible = false;
-
-                string matricula = Request.QueryString["matricula"];
-                string fechaInicio = Request.QueryString["fini"];
-                string fechaFin = Request.QueryString["ffin"];
-
-                if (matricula != null && matricula != "" && fechaInicio != null && fechaInicio != "" && fechaFin != null && fechaFin != "")
+                string documento = Request.QueryString["documento"];
+                if (documento != null && documento != "")
                 {
-                    Label1.Visible = false;
-                    txtFechaInicio.Visible = false;
-                    txtFechaInicio.Text = fechaInicio;
-                    Label7.Visible = false;
-                    txtFechaFin.Visible = false;
-                    txtFechaFin.Text = fechaFin;
-                    Label9.Visible = false;
-                    ddlMarca.Visible = false;
-                    Label2.Visible = false;
-                    ddlModelo.Visible = false;
+                    pnlPaso1.Visible = false;
+                    pnlPaso2.Visible = true;
+                    pnlPaso3.Visible = false;
+
+                    ddlMarca.DataSource = Rentadora.Instancia.listarMarcas();
+                    ddlMarca.DataBind();
+                    ddlMarca.Items.Insert(0, new ListItem("-- Seleccione una marca --", "0"));
+                    ddlModelo.Items.Insert(0, new ListItem("-- Seleccione un modelo --", "0"));
+                    ddlModelo.Enabled = false;
+                    grdVehiculos.Visible = false;
+                    Label4.Visible = false;
+
+                    string matricula = Request.QueryString["matricula"];
+
+                    if (matricula != null && matricula != "" )
+                    {
+                        pnlPaso2.Visible = false;
+                        pnlPaso3.Visible = true;
+                    }
+                    else
+                    {
+                        pnlPaso1.Visible = false;
+                        pnlPaso2.Visible = true;
+                        pnlPaso3.Visible = false;
+                    }
                 }
                 else
                 {
-                    Label1.Visible = true;
-                    txtFechaInicio.Visible = true;
-                    Label7.Visible = true;
-                    txtFechaFin.Visible = true;
-                    Label9.Visible = true;
-                    ddlMarca.Visible = true;
-                    Label2.Visible = true;
-                    ddlModelo.Visible = true;
+                    pnlPaso1.Visible = true;
+                    pnlPaso2.Visible = false;
+                    pnlPaso3.Visible = false;
                 }
+                
             }
 
         }
 
-        protected void btnRegistrar_Click(object sender, EventArgs e)
+        protected void btnPaso1_Click(object sender, EventArgs e)
         {
-            string documento = txtDocumento.Text;
-            string fechaFin = txtFechaFin.Text;
-            string fechaInicio = txtFechaInicio.Text;
-            string horaFin = txtHoraFin.Text;
-            string horaInicio = txtHoraInicio.Text;
-            
+            int documento = 0;
+            int.TryParse(txtDocumento.Text, out documento);
+            Cliente cli = Rentadora.Instancia.buscarCliente(documento);
+            if(cli == null)
+            {
+                Response.Redirect("registrarCliente.aspx");
+            }
+            else{
+                Response.Redirect("registrarAlquiler.aspx?documento=" + documento);
+            }
         }
 
-        private void vaciarFormulario()
+        protected void btnPaso3_Click(object sender, EventArgs e)
         {
+            int documento = 0;
+            int.TryParse(Request.QueryString["documento"],out documento);
+            string matricula = Request.QueryString["matricula"];
+
+            string fechaFin = txtFechaFin.Text;
+            string fechaInicio = txtFechaInicio.Text;
+            
+            string horaInicio = txtHoraInicio.Text;
+            string horaFin = txtHoraInicio.Text.Substring(0, 2);
+            int horaInicioAux = -1;
+            if (horaInicio != "")
+            {
+                horaInicio = txtHoraInicio.Text.Substring(0, 2);
+                int.TryParse(horaInicio, out horaInicioAux);
+            }
+
+            int horaFinAux = -1;
+            if (horaFin != "")
+            {
+                horaFin = txtHoraFin.Text.Substring(0, 2);
+                int.TryParse(horaFin, out horaFinAux);
+            }
+
+            DateTime fechaInicioAux = new DateTime();
+            DateTime fechaFinAux = new DateTime();
+
+            DateTime.TryParse(fechaInicio, out fechaInicioAux);
+            DateTime.TryParse(fechaFin, out fechaFinAux);
+
+            Rentadora.Instancia.alquilarVehiculo(fechaInicioAux, fechaFinAux, horaInicioAux, horaFinAux, matricula, documento);
 
         }
 
@@ -92,9 +132,10 @@ namespace Rentadora_Web
             DateTime.TryParse(txtFechaInicio.Text, out fechaInicio);
             DateTime fechaFin = new DateTime();
             DateTime.TryParse(txtFechaFin.Text, out fechaFin);
+            string marca = ddlMarca.Text;
             string modelo = ddlModelo.Text;
 
-            List<Vehiculo> listaVehiculos = Rentadora.Instancia.buscarVehiculoDisponible(fechaInicio, fechaFin, modelo);
+            List<Vehiculo> listaVehiculos = Rentadora.Instancia.buscarVehiculoDisponible(marca,modelo);
             grdVehiculos.DataSource = listaVehiculos;
             grdVehiculos.DataBind();
 
@@ -109,8 +150,6 @@ namespace Rentadora_Web
             {
                 grdVehiculos.Visible = false;
                 Label4.Visible = false;
-                //ddlMatricula.Items.Insert(0, new ListItem("-- No hay vehiculos disponibles --", "0"));
-                //ddlMatricula.Enabled = false;
             }
 
         }
@@ -118,7 +157,6 @@ namespace Rentadora_Web
         protected void grdVehiculos_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            // string TxtNuevaDescripcion = grdEventos.Rows[e.RowIndex] //guardo en un textbox el dato ingresado en el control que agregue al ItemTemplate
         }
 
         protected void grdVehiculos_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
@@ -126,7 +164,7 @@ namespace Rentadora_Web
             lblEstado.Text = "";
             GridViewRow x = grdVehiculos.Rows[e.NewSelectedIndex];
             string matricula = x.Cells[0].Text;
-            Response.Redirect("registrarAlquiler.aspx?matricula=" + matricula + "&fini=" + txtFechaInicio.Text + "&ffin=" + txtFechaFin.Text);
+            Response.Redirect("registrarAlquiler.aspx?documento=" + Request.QueryString["documento"] + "&matricula=" + matricula);
         }
 
 

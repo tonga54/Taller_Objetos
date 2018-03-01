@@ -8,16 +8,8 @@ namespace Rentadora_Dominio
 {
     public abstract class Cliente
     {
-        protected int anio;
         protected int telefono;
-
-        public int Anio
-        {
-            get
-            {
-                return this.anio;
-            }
-        }
+        protected string nombre;
 
         public int Telefono
         {
@@ -27,9 +19,9 @@ namespace Rentadora_Dominio
             }
         }
 
-        public Cliente(int telefono)
+        public Cliente(string nombre, int telefono)
         {
-            this.anio = DateTime.Now.Year;
+            this.nombre = nombre;
             this.telefono = telefono;
         }
 
