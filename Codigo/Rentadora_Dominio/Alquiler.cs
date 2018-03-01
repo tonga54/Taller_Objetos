@@ -87,6 +87,14 @@ namespace Rentadora_Dominio
             }
         }
 
+        public Decimal MontoFaltante
+        {
+            get
+            {
+                return this.montoFaltante();
+            }
+        }
+
         public Alquiler(Cliente cliente, Vehiculo vehiculo, int horaInicio, int horaFin, DateTime fechaInicio, DateTime fechaFin)
         {
             this.cliente = cliente;

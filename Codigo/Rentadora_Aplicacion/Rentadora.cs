@@ -221,15 +221,19 @@ namespace Rentadora_Aplicacion
             return veh;
         }
 
-        /*
-
-        public Alquiler buscarAlquiler(Vehiculo veh)
+        public List<Alquiler> buscarAlquilerXMatricula(string matricula)
         {
-            Alquiler alq= CAlquiler.Instancia.buscarAlquiler(veh);
+            Alquiler alquiler = null;
+            List<Alquiler> alq = new List<Alquiler>();
+            Vehiculo veh = buscarVehiculoXMatricula(matricula);
+            if(veh != null)
+            {
+                alquiler = CAlquiler.Instancia.buscarAlquiler(veh);
+                alq.Add(alquiler);
+            }
+            
             return alq;
         }
-        
-        */
 
         public Cliente buscarCliente(int documento)
         {
@@ -333,7 +337,7 @@ namespace Rentadora_Aplicacion
 
         public void preCargarAlquileres()
         {
-            Rentadora.Instancia.alquilarVehiculo(new DateTime(2018, 02, 01), new DateTime(2018, 02, 15), 15, 20, "ASC-3732", 15151212);
+            Rentadora.Instancia.alquilarVehiculo(new DateTime(2018, 02, 01), new DateTime(2018, 02, 10), 15, 20, "ASC-3732", 15151212);
         }
 
 

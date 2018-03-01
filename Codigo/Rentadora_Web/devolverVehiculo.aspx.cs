@@ -32,6 +32,7 @@ namespace Rentadora_Web
 
                     ddlMatriculas.DataSource = Rentadora.Instancia.buscarMatriculasXCliente(doc);
                     ddlMatriculas.DataBind();
+                    ddlMatriculas.Items.Insert(0, new ListItem("-- Seleccione una matricula --", "0"));
                     grdVehiculos.Visible = false;
                     Label4.Visible = false;
 
@@ -113,22 +114,13 @@ namespace Rentadora_Web
 
         protected void ddlMatriculas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DateTime fechaInicio = new DateTime();
-            DateTime.TryParse(txtFechaInicio.Text, out fechaInicio);
-            DateTime fechaFin = new DateTime();
-            DateTime.TryParse(txtFechaFin.Text, out fechaFin);
-            string marca = ddlMatriculas.Text;
-            string modelo = ddlMatriculas.Text;
-
-            List<Vehiculo> listaVehiculos = Rentadora.Instancia.buscarVehiculoDisponible(marca, modelo);
-            grdVehiculos.DataSource = listaVehiculos;
-            grdVehiculos.DataBind();
-
-            if (listaVehiculos != null)
+            string matricula = ddlMatriculas.Text;
+            List<Alquiler> alq = Rentadora.Instancia.buscarAlquilerXMatricula(matricula);
+            if (alq != null)
             {
                 grdVehiculos.Visible = true;
                 Label4.Visible = true;
-                grdVehiculos.DataSource = listaVehiculos;
+                grdVehiculos.DataSource = alq;
                 grdVehiculos.DataBind();
             }
             else

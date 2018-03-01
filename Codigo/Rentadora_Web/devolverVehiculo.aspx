@@ -40,11 +40,17 @@
         <asp:Label ID="Label4" runat="server" Text="Coches"></asp:Label>
         <asp:GridView ID="grdVehiculos" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="grdVehiculos_SelectedIndexChanged" OnSelectedIndexChanging="grdVehiculos_SelectedIndexChanging">
             <Columns>
-              <asp:BoundField DataField="matricula" HeaderText="Matricula" />
-                <asp:BoundField DataField="anio" HeaderText="Anio" />
-                <asp:BoundField DataField="kilometraje" HeaderText="Kilometraje" />
-                <asp:BoundField DataField="Fotos" HeaderText="Fotos" HtmlEncode="False" HtmlEncodeFormatString="False" />
-                <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
+                <asp:BoundField DataField="FechaIniCorta" HeaderText="Inicio" />
+                <asp:BoundField DataField="FechaFinCorta" HeaderText="Fin" />
+                <asp:BoundField DataField="HoraIni" HeaderText="Hora inicio" />
+                <asp:BoundField DataField="HoraFin" HeaderText="Hora fin" />
+                <asp:BoundField DataField="cliente.Documento" HeaderText="Documento" />
+                <asp:BoundField DataField="vehiculo.Matricula" HeaderText="Matricula" />
+                <asp:BoundField DataField="vehiculo.Anio" HeaderText="Anio" />
+                <asp:BoundField DataField="vehiculo.Fotos" HeaderText="Fotos" HtmlEncode="False" HtmlEncodeFormatString="False" />
+                <asp:BoundField DataField="Monto" HeaderText="Costo" HtmlEncode="False" HtmlEncodeFormatString="False" />
+                <asp:BoundField DataField="MontoFaltante" HeaderText="Monto Faltante" HtmlEncode="False" HtmlEncodeFormatString="False" />
+                
             </Columns>
         </asp:GridView>
 
