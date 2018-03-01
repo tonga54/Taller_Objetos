@@ -112,6 +112,51 @@ namespace Rentadora_Dominio
 
             return matriculas;
         }
+        /*
+        private static bool verificarTextoVacio(string texto)
+        {
+            bool valido = false;
+
+            if (texto.Length >= 1)
+            {
+                valido = true;
+            }
+            else
+            {
+                valido = false;
+            }
+
+            return valido;
+        }
+
+        private string verificarFechas(DateTime fecha1, DateTime fecha2)
+        {
+            bool valido = false;
+            string devolucion = "";
+
+            if (fecha1 >= DateTime.Today and fecha2 >= DateTime.Today)
+            {
+                valido = true;
+            }
+            else
+            {
+                valido = false;
+            }
+
+            return devolucion;
+        }
+
+        public bool VerificarMailRepetido(string mail)
+        {
+            foreach (Usuario usuario in listaUsuarios)
+            {
+                if (mail == usuario.Mail)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }*/
 
     }
 }

@@ -131,7 +131,7 @@ namespace Rentadora_Dominio
             TimeSpan cantidadDiasExtra = DateTime.Now.Subtract(fechaFin);
             decimal costoBase = cantidadDiasExtra.Days * Vehiculo.costoTipoVehiculo();
             decimal costoFinal = cliente.calcularCosto(costoBase);
-            return costoFinal;
+            return Math.Round(costoFinal);
         }
 
         public decimal calcularCosto()
@@ -139,7 +139,7 @@ namespace Rentadora_Dominio
             TimeSpan cantidadDias = fechaFin.Subtract(fechaIni);
             decimal costoBase = cantidadDias.Days * Vehiculo.costoTipoVehiculo();
             decimal costoFinal = cliente.calcularCosto(costoBase);
-            return costoFinal;
+            return Math.Round(costoFinal);
         }
 
         public bool disponibilidadVehiculo()
