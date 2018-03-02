@@ -13,11 +13,6 @@ namespace Rentadora_Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["rol"].ToString() != "vendedor" && Session["rol"].ToString() != "administrador")
-            {
-                Session.Clear();
-                Response.Redirect("index.aspx");
-            }
 
             if (!IsPostBack)
             {

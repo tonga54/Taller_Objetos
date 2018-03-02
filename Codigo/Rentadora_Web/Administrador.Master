@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Usuario.master.cs" Inherits="Rentadora_Web.Usuario" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Administrador.Master.cs" Inherits="Rentadora_Web.Administrador" %>
 
 <!DOCTYPE html>
 
@@ -27,8 +27,6 @@
                 <asp:Panel runat="server" ID="pnlUsuario">
                     <li><a href="registrarAlquiler.aspx"><span class="icon-database"> </span><span class="info">Registrar alquiler</span></a></li>
                     <li><a href="devolverVehiculo.aspx"><span class="icon-profile"> </span><span class="info">Devolucion de vehiculos</span></a></li>
-                </asp:Panel>
-                <asp:Panel runat="server" ID="pnlGerente">
                     <li><a href="listadoVehiculosRetrasados.aspx"><span class="icon-list2"> </span><span class="info">Listado vehiculos retrasados</span></a></li> 
                     <!--<li><a href="agregarServiciosAEvento.aspx"><span class="icon-profile"> </span><span class="info">Listado vehiculos retrasados</span></a></li>-->
                 </asp:Panel>

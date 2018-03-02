@@ -26,11 +26,21 @@ namespace Rentadora_Web
             {
                 string nombreUsuario = Rentadora.Instancia.nombreUsuario(usu);
                 string rolUsuario = Rentadora.Instancia.rolUsuario(usu);
-                if(rolUsuario != "" && nombreUsuario != "")
+                if (rolUsuario != "" && nombreUsuario != "")
                 {
                     Session["nombre"] = nombreUsuario;
                     Session["rol"] = rolUsuario;
-                    Response.Redirect("inicio.aspx");
+                    
+                    if(rolUsuario == "administrador")
+                    {
+                        Response.Redirect("");
+                    }else if(rolUsuario == "vendedor")
+                    {
+                        Response.Redirect("registrarAlquiler.aspx");
+                    }else
+                    {
+                        Response.Redirect("listadoVehiculosRetrasados.aspx");
+                    }
                 }
             }
             else

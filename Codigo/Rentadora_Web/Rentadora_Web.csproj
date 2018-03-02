@@ -150,7 +150,9 @@
     <Content Include="fonts\SourceSansPro-Semibold.otf" />
     <Content Include="fonts\SourceSansPro-SemiboldIt.otf" />
     <Content Include="registrarAlquiler.aspx" />
-    <Content Include="Usuario.Master" />
+    <Content Include="Vendedor.Master" />
+    <Content Include="Gerente.Master" />
+    <Content Include="Administrador.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -170,6 +172,13 @@
     </Compile>
     <Compile Include="devolverVehiculo.aspx.designer.cs">
       <DependentUpon>devolverVehiculo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador.Master.cs">
+      <DependentUpon>Administrador.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador.Master.designer.cs">
+      <DependentUpon>Administrador.Master</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -203,12 +212,19 @@
     <Compile Include="registrarAlquiler.aspx.designer.cs">
       <DependentUpon>registrarAlquiler.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Usuario.Master.cs">
-      <DependentUpon>Usuario.Master</DependentUpon>
+    <Compile Include="Gerente.Master.cs">
+      <DependentUpon>Gerente.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Usuario.Master.designer.cs">
-      <DependentUpon>Usuario.Master</DependentUpon>
+    <Compile Include="Gerente.Master.designer.cs">
+      <DependentUpon>Gerente.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Vendedor.Master.cs">
+      <DependentUpon>Vendedor.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vendedor.Master.designer.cs">
+      <DependentUpon>Vendedor.Master</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

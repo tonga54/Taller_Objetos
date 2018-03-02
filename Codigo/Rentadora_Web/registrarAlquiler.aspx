@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Usuario.Master" AutoEventWireup="true" CodeBehind="registrarAlquiler.aspx.cs" Inherits="Rentadora_Web.registrarAlquiler" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vendedor.Master" AutoEventWireup="true" CodeBehind="registrarAlquiler.aspx.cs" Inherits="Rentadora_Web.registrarAlquiler" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         table th{

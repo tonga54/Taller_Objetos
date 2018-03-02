@@ -10,7 +10,7 @@
 namespace Rentadora_Web {
     
     
-    public partial class Usuario {
+    public partial class Vendedor {
         
         /// <summary>
         /// Control head.
@@ -29,24 +29,6 @@ namespace Rentadora_Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCerrarSesion;
-        
-        /// <summary>
-        /// Control pnlUsuario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlUsuario;
-        
-        /// <summary>
-        /// Control pnlGerente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlGerente;
         
         /// <summary>
         /// Control sectionTitle.
