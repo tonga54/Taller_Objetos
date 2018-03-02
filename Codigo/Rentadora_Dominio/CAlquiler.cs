@@ -45,10 +45,7 @@ namespace Rentadora_Dominio
 
             if(vehiculosRetrasados != null && vehiculosRetrasados.Count > 1)
             {
-                //Fecha de devolución en orden descendente.
-                vehiculosRetrasados.Sort(new OrdenamientoAlquiler(-1, true));
-                //Matrícula en forma ascendente.
-                vehiculosRetrasados.Sort(new OrdenamientoAlquiler(1, false));
+                vehiculosRetrasados.Sort(new OrdenamientoAlquiler());
             }
 
             return vehiculosRetrasados;

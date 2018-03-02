@@ -8,25 +8,20 @@ namespace Rentadora_Dominio
 {
     class OrdenamientoAlquiler : IComparer<Alquiler>
     {
-        private int orden;
-        private bool atributoAOrdenar;
 
-        public OrdenamientoAlquiler(int orden, bool attr)
+        public OrdenamientoAlquiler()
         {
-            this.orden = orden;
-            this.atributoAOrdenar = attr;
+
         }
 
         public int Compare(Alquiler alq1, Alquiler alq2)
         {
-            if (this.atributoAOrdenar)
+            int ordenamiento = alq1.FechaFin.CompareTo(alq2.FechaFin) * -1;
+            if(ordenamiento == 0)
             {
-                return alq1.FechaFin.CompareTo(alq2.FechaFin) * orden;
-            }else
-            {
-                return alq1.matriculaVehiculo().CompareTo(alq2.matriculaVehiculo()) * orden;
+                ordenamiento = alq1.matriculaVehiculo().CompareTo(alq2.matriculaVehiculo()) * 1;
             }
-
+            return ordenamiento;
         }
 
     }
