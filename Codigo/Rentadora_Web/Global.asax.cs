@@ -15,8 +15,8 @@ namespace Rentadora_Web
         protected void Application_Start(object sender, EventArgs e)
         {
             string serializado = HttpRuntime.AppDomainAppPath + @"binario\serial.bin";
-            string vehiculos = HttpRuntime.AppDomainAppPath + @"bitacoras\vehiculos.txt";
-            string tiposVehiculos = HttpRuntime.AppDomainAppPath + @"bitacoras\tiposVehiculos.txt";
+            string vehiculos = HttpRuntime.AppDomainAppPath + @"vehiculos\vehiculos.txt";
+            string tiposVehiculos = HttpRuntime.AppDomainAppPath + @"vehiculos\tiposVehiculos.txt";
             Rentadora.Instancia.preCargarDatos();
 
 

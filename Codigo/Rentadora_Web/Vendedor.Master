@@ -23,9 +23,8 @@
         </header>
         <nav>
            <ul>
-                <li><a href="inicio.aspx"><span class="icon-home"> </span><span class="info">Inicio</span></a></li>
-                    <li><a href="registrarAlquiler.aspx"><span class="icon-database"> </span><span class="info">Registrar alquiler</span></a></li>
-                    <li><a href="devolverVehiculo.aspx"><span class="icon-profile"> </span><span class="info">Devolucion de vehiculos</span></a></li>
+                <li><a href="registrarAlquiler.aspx"><span class="icon-database"> </span><span class="info">Registrar alquiler</span></a></li>
+                <li><a href="devolverVehiculo.aspx"><span class="icon-profile"> </span><span class="info">Devolucion de vehiculos</span></a></li>
            </ul>
         </nav>
         <section>

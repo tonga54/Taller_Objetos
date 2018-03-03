@@ -23,7 +23,6 @@
         </header>
         <nav>
            <ul>
-                <li><a href="inicio.aspx"><span class="icon-home"> </span><span class="info">Inicio</span></a></li>
                 <li><a href="listadoVehiculosRetrasados.aspx"><span class="icon-list2"> </span><span class="info">Listado vehiculos retrasados</span></a></li> 
            </ul>
         </nav>
