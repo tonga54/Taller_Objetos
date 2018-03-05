@@ -330,13 +330,10 @@ namespace Rentadora_Aplicacion
             Rentadora.Instancia.agregarCliente(098125846, 15151212, "Empresa X", "Luis",1980);
             Rentadora.instancia.cargarTIposVehiculos("Chevrolet", "Onix", 400);
             Rentadora.Instancia.registrarUsuario("gaston", "1234", "gerente");
-<<<<<<< HEAD
             Rentadora.Instancia.registrarUsuario("charly", "1234", "administrador");
             Rentadora.Instancia.registrarUsuario("administrador1", "administrador1", "administrador");
             Rentadora.Instancia.registrarUsuario("vendedor1", "vendedor1", "vendedor");
-=======
             Rentadora.Instancia.registrarUsuario("charly", "1234", "vendedor");
->>>>>>> vehdev
             //Rentadora.instancia.cargarTIposVehiculos("Volskwagen", "C4", 500);
             //Rentadora.instancia.cargarTIposVehiculos("Chevrolet", "V4", 200);
 
