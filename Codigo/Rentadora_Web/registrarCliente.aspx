@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Usuario.Master" AutoEventWireup="true" CodeBehind="registrarCliente.aspx.cs" Inherits="Rentadora_Web.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vendedor.Master" AutoEventWireup="true" CodeBehind="registrarCliente.aspx.cs" Inherits="Rentadora_Web.registrarCliente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>

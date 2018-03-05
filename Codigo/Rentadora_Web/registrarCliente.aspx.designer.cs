@@ -10,7 +10,7 @@
 namespace Rentadora_Web {
     
     
-    public partial class WebForm1 {
+    public partial class registrarCliente {
         
         /// <summary>
         /// Control pnlPaso1.

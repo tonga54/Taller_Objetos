@@ -52,44 +52,6 @@ namespace Rentadora_Web
             }
         }
 
-<<<<<<< HEAD
-        protected void btnPaso3_Click(object sender, EventArgs e)
-        {
-            string documento = Request.QueryString["documento"];
-            string matricula = Request.QueryString["matricula"];
-
-            string fechaFin = txtFechaFin.Text;
-            string fechaInicio = txtFechaInicio.Text;
-
-            string horaInicio = txtHoraInicio.Text;
-            string horaFin = txtHoraInicio.Text.Substring(0, 2);
-            int horaInicioAux = -1;
-            if (horaInicio != "")
-            {
-                horaInicio = txtHoraInicio.Text.Substring(0, 2);
-                int.TryParse(horaInicio, out horaInicioAux);
-            }
-
-            int horaFinAux = -1;
-            if (horaFin != "")
-            {
-                horaFin = txtHoraFin.Text.Substring(0, 2);
-                int.TryParse(horaFin, out horaFinAux);
-            }
-
-            DateTime fechaInicioAux = new DateTime();
-            DateTime fechaFinAux = new DateTime();
-
-            DateTime.TryParse(fechaInicio, out fechaInicioAux);
-            DateTime.TryParse(fechaFin, out fechaFinAux);
-
-            Rentadora.Instancia.alquilarVehiculo(fechaInicioAux, fechaFinAux, horaInicioAux, horaFinAux, matricula, documento);
-
-        }
-
-
-=======
->>>>>>> vehdev
         protected void ddlMatriculas_SelectedIndexChanged(object sender, EventArgs e)
         {
             string matricula = ddlMatriculas.Text;
