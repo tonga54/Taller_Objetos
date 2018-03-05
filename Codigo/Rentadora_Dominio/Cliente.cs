@@ -25,7 +25,7 @@ namespace Rentadora_Dominio
             this.telefono = telefono;
         }
 
-        public abstract bool verificarDocumento(int doc);
+        public abstract bool verificarDocumento(string doc);
         public abstract decimal calcularCosto(decimal costo);
 
     }

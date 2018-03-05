@@ -151,6 +151,7 @@
     <Content Include="fonts\SourceSansPro-SemiboldIt.otf" />
     <Content Include="registrarAlquiler.aspx" />
     <Content Include="Usuario.Master" />
+    <Content Include="registrarCliente.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -209,6 +210,13 @@
     </Compile>
     <Compile Include="Usuario.Master.designer.cs">
       <DependentUpon>Usuario.Master</DependentUpon>
+    </Compile>
+    <Compile Include="registrarCliente.aspx.cs">
+      <DependentUpon>registrarCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="registrarCliente.aspx.designer.cs">
+      <DependentUpon>registrarCliente.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

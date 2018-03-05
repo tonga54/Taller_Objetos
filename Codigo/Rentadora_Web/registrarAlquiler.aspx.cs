@@ -24,6 +24,8 @@ namespace Rentadora_Web
                 string documento = Request.QueryString["documento"];
                 if (documento != null && documento != "")
                 {
+                    btnRegistrar.Visible = true;
+
                     pnlPaso1.Visible = false;
                     pnlPaso2.Visible = true;
                     pnlPaso3.Visible = false;
@@ -63,8 +65,7 @@ namespace Rentadora_Web
 
         protected void btnPaso1_Click(object sender, EventArgs e)
         {
-            int documento = 0;
-            int.TryParse(txtDocumento.Text, out documento);
+            string documento = txtDocumento.Text;
             Cliente cli = Rentadora.Instancia.buscarCliente(documento);
             if(cli == null)
             {
@@ -77,8 +78,7 @@ namespace Rentadora_Web
 
         protected void btnPaso3_Click(object sender, EventArgs e)
         {
-            int documento = 0;
-            int.TryParse(Request.QueryString["documento"],out documento);
+            string documento = Request.QueryString["documento"];
             string matricula = Request.QueryString["matricula"];
 
             string fechaFin = txtFechaFin.Text;
@@ -107,6 +107,9 @@ namespace Rentadora_Web
             DateTime.TryParse(fechaFin, out fechaFinAux);
 
             Rentadora.Instancia.alquilarVehiculo(fechaInicioAux, fechaFinAux, horaInicioAux, horaFinAux, matricula, documento);
+            List<Alquiler> alq = Rentadora.Instancia.buscarAlquilerXMatricula(matricula);
+            lblEstado.Text = "<span class='green'>Alquiler ingresado con éxito: Costo $" + Math.Round(alq[0].calcularCosto()).ToString() + "</span>";
+            btnRegistrar.Visible = false;
 
         }
 

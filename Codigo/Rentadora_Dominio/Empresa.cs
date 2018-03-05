@@ -43,10 +43,12 @@ namespace Rentadora_Dominio
             this.anio = anio;
         }
 
-        public override bool verificarDocumento(int doc)
+        public override bool verificarDocumento(string doc)
         {
+            int rut;
+            int.TryParse(doc, out rut);
             bool retorno = false;
-            if (doc == this.rut)
+            if (rut == this.rut)
             {
                 retorno = true;
             }

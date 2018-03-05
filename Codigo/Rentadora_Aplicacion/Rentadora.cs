@@ -71,7 +71,7 @@ namespace Rentadora_Aplicacion
         }
 
         //Particular
-        public bool agregarCliente(int telefono, int documento, int tipoDocumento, string pais, string nombre, string apellido)
+        public bool agregarCliente(int telefono, string documento, string tipoDocumento, string pais, string nombre, string apellido)
         {
             bool devolucion = CCliente.Instancia.agregarCliente(telefono, documento, tipoDocumento, pais, nombre, apellido);
             return devolucion;
@@ -204,6 +204,11 @@ namespace Rentadora_Aplicacion
                 while ((linea = str.ReadLine()) != null)
                 {
                     string[] datos = linea.Split('@');
+                    string marca = datos[0];
+                    string modelo = datos[1];
+                    decimal precioDiario = 0;
+                    decimal.TryParse(datos[2], out precioDiario);
+                    this.cargarTIposVehiculos(marca, modelo, precioDiario);
                 }
             }
             catch (Exception ex)
@@ -215,6 +220,7 @@ namespace Rentadora_Aplicacion
                 str.Close();
             }
         }
+
         public Vehiculo buscarVehiculoXMatricula(string matricula)
         {
             Vehiculo veh = CVehiculo.Instancia.buscarVehiculoXMatricula(matricula);
@@ -235,7 +241,7 @@ namespace Rentadora_Aplicacion
             return alq;
         }
 
-        public Cliente buscarCliente(int documento)
+        public Cliente buscarCliente(string documento)
         {
             Cliente cli = CCliente.Instancia.buscarCliente(documento);
             return cli;
@@ -254,7 +260,7 @@ namespace Rentadora_Aplicacion
             return devolucion;
         }
 
-        public List<string> buscarMatriculasXCliente(int documento)
+        public List<string> buscarMatriculasXCliente(string documento)
         {
             List<string> devolucion = null;
             Cliente cli = CCliente.Instancia.buscarCliente(documento);
@@ -267,7 +273,7 @@ namespace Rentadora_Aplicacion
 
         }
 
-        public string alquilarVehiculo(DateTime fechaIni, DateTime fechaFin, int horaIni, int horaFIn, string matricula,int documento)
+        public string alquilarVehiculo(DateTime fechaIni, DateTime fechaFin, int horaIni, int horaFIn, string matricula, string documento)
         {
             Vehiculo veh = CVehiculo.Instancia.comprobarDisponibilidad(matricula);
             string devolucion = "";
@@ -325,6 +331,8 @@ namespace Rentadora_Aplicacion
             Rentadora.instancia.cargarTIposVehiculos("Chevrolet", "Onix", 400);
             Rentadora.Instancia.registrarUsuario("gaston", "1234", "gerente");
             Rentadora.Instancia.registrarUsuario("charly", "1234", "administrador");
+            Rentadora.Instancia.registrarUsuario("administrador1", "administrador1", "administrador");
+            Rentadora.Instancia.registrarUsuario("vendedor1", "vendedor1", "vendedor");
             //Rentadora.instancia.cargarTIposVehiculos("Volskwagen", "C4", 500);
             //Rentadora.instancia.cargarTIposVehiculos("Chevrolet", "V4", 200);
 
@@ -337,7 +345,7 @@ namespace Rentadora_Aplicacion
 
         public void preCargarAlquileres()
         {
-            Rentadora.Instancia.alquilarVehiculo(new DateTime(2018, 02, 01), new DateTime(2018, 02, 10), 15, 20, "ASC-3732", 15151212);
+            Rentadora.Instancia.alquilarVehiculo(new DateTime(2018, 02, 01), new DateTime(2018, 02, 10), 15, 20, "ASC-3732", "15151212");
         }
 
 

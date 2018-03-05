@@ -87,8 +87,25 @@ namespace Rentadora_Dominio
         
         public void registrarAlquiler(Cliente cliente, Vehiculo vehiculo, int horaInicio, int horaFin, DateTime fechaInicio, DateTime fechaFin)
         {
+            //int devolucion;
+
             Alquiler alq = new Alquiler(cliente, vehiculo, horaInicio, horaFin, fechaInicio, fechaFin);
-            alquileres.Add(alq);
+            
+                        
+
+            /*if (verificarHoras(horaInicio, horaFin) == 0)
+            {
+                if (verificarFechas(fechaInicio, fechaFin))
+                {*/
+                    alquileres.Add(alq);
+                    /*devolucion = 0;
+                }
+                
+            }
+            else
+            {
+                devolucion = 1;
+            }*/
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
@@ -112,51 +129,103 @@ namespace Rentadora_Dominio
 
             return matriculas;
         }
-        /*
-        private static bool verificarTextoVacio(string texto)
+
+        #region controles
+
+        public int verificarDatos(string tipo, string texto, decimal numerico, int entero, DateTime fecha1, DateTime fecha2)
         {
-            bool valido = false;
+            int devolucion = 0;
 
-            if (texto.Length >= 1)
+            switch (tipo)
             {
-                valido = true;
-            }
-            else
-            {
-                valido = false;
-            }
+                case "T":
 
-            return valido;
-        }
+                    if (texto.Length >= 1)
+                    {
+                        devolucion = 1;
+                    }
 
-        private string verificarFechas(DateTime fecha1, DateTime fecha2)
-        {
-            bool valido = false;
-            string devolucion = "";
+                    break;
+                case "N":
 
-            if (fecha1 >= DateTime.Today and fecha2 >= DateTime.Today)
-            {
-                valido = true;
-            }
-            else
-            {
-                valido = false;
+                    if (numerico >= 1)
+                    {
+                        devolucion = 2;
+                    }
+
+                    break;
+                case "E":
+
+                    if (entero >= 1)
+                    {
+                        devolucion = 3;
+                    }
+
+                    break;
+                case "F":
+
+                    if (fecha1 < fecha2 && fecha1 >= DateTime.Today)
+                    {
+                        devolucion = 4;
+                    }
+
+                    break;
             }
 
             return devolucion;
         }
 
-        public bool VerificarMailRepetido(string mail)
+        public int verificarFechas(DateTime fecha1, DateTime fecha2)
         {
-            foreach (Usuario usuario in listaUsuarios)
+
+            int devolucion = 1;
+
+            if (fecha1 < fecha2 && fecha1 >= DateTime.Today && fecha2 >= DateTime.Today)
             {
-                if (mail == usuario.Mail)
-                {
-                    return false;
-                }
+                devolucion = 0;
             }
-            return true;
-        }*/
+
+            return devolucion;
+
+        }
+
+        public int verificarHoras(int hora1, int hora2)
+        {
+            int devolucion = 2;
+
+            if(hora1 >= 1 && hora1 <= 24 && hora1 < hora2)
+            {
+                devolucion = 0;
+            }
+
+            return devolucion;
+        }
+
+        public int verificarTextos(string texto)
+        {
+            int devolucion = 3;
+
+            if (texto.Length >= 1)
+            {
+                devolucion = 0;
+            }
+
+            return devolucion;
+        }
+
+        public int verificarNumericos(int entero, decimal numerico)
+        {
+            int devolucion = 4;
+
+            if (entero >= 1 && numerico >= 1)
+            {
+                devolucion = 0;
+            }
+
+            return devolucion;
+        }
+
+        #endregion
 
     }
 }

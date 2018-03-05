@@ -31,7 +31,7 @@ namespace Rentadora_Dominio
         }
         
         //Particular
-        public bool agregarCliente(int telefono, int documento, int tipoDocumento, string pais, string nombre, string apellido)
+        public bool agregarCliente(int telefono, string documento, string tipoDocumento, string pais, string nombre, string apellido)
         {
             bool devolucion = false;
             Particular part = new Particular(telefono, documento, tipoDocumento, pais, nombre, apellido);
@@ -56,7 +56,7 @@ namespace Rentadora_Dominio
             return devolucion;
         }
 
-        public bool verificarCliente(int documento)
+        public bool verificarCliente(string documento)
         {
             bool encontrado = false;
             foreach (Cliente cli in clientes)
@@ -70,7 +70,7 @@ namespace Rentadora_Dominio
             return encontrado;
         }
 
-        public Cliente buscarCliente(int documento)
+        public Cliente buscarCliente(string documento)
         {
             int i = 0;
             Cliente cl = null;

@@ -8,12 +8,12 @@ namespace Rentadora_Dominio
 {
     public class Particular : Cliente
     {
-        private int tipoDocumento;
-        private int documento;
+        private string tipoDocumento;
+        private string documento;
         private string pais;
         private string apellido;
 
-        public int TipoDocumento
+        public string TipoDocumento
         {
             get
             {
@@ -45,7 +45,7 @@ namespace Rentadora_Dominio
             }
         }
 
-        public int Documento
+        public string Documento
         {
             get
             {
@@ -53,7 +53,7 @@ namespace Rentadora_Dominio
             }
         }
 
-        public Particular(int telefono, int documento, int tipoDocumento, string pais, string nombre, string apellido) : base(nombre,telefono)
+        public Particular(int telefono, string documento, string tipoDocumento, string pais, string nombre, string apellido) : base(nombre,telefono)
         {
             this.documento = documento;
             this.tipoDocumento = tipoDocumento;
@@ -61,7 +61,7 @@ namespace Rentadora_Dominio
             this.apellido = apellido;
         }
 
-        public override bool verificarDocumento(int doc)
+        public override bool verificarDocumento(string doc)
         {
             bool retorno = false;
             if(doc == this.documento)

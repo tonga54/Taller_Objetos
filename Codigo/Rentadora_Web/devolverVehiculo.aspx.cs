@@ -24,13 +24,11 @@ namespace Rentadora_Web
                 string documento = Request.QueryString["documento"];
                 if (documento != null && documento != "")
                 {
-                    int doc = 0;
-                    int.TryParse(documento, out doc);
                     pnlPaso1.Visible = false;
                     pnlPaso2.Visible = true;
                     pnlPaso3.Visible = false;
 
-                    ddlMatriculas.DataSource = Rentadora.Instancia.buscarMatriculasXCliente(doc);
+                    ddlMatriculas.DataSource = Rentadora.Instancia.buscarMatriculasXCliente(documento);
                     ddlMatriculas.DataBind();
                     ddlMatriculas.Items.Insert(0, new ListItem("-- Seleccione una matricula --", "0"));
                     grdVehiculos.Visible = false;
@@ -63,8 +61,7 @@ namespace Rentadora_Web
 
         protected void btnPaso1_Click(object sender, EventArgs e)
         {
-            int documento = 0;
-            int.TryParse(txtDocumento.Text, out documento);
+            string documento = txtDocumento.Text;
             Cliente cli = Rentadora.Instancia.buscarCliente(documento);
             if (cli == null)
             {
@@ -78,8 +75,7 @@ namespace Rentadora_Web
 
         protected void btnPaso3_Click(object sender, EventArgs e)
         {
-            int documento = 0;
-            int.TryParse(Request.QueryString["documento"], out documento);
+            string documento = Request.QueryString["documento"];
             string matricula = Request.QueryString["matricula"];
 
             string fechaFin = txtFechaFin.Text;
