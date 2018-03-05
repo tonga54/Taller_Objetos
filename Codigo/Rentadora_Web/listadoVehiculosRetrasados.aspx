@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Usuario.Master" AutoEventWireup="true" CodeBehind="listadoVehiculosRetrasados.aspx.cs" Inherits="Rentadora_Web.listadoVehiculosRetrasados" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Gerente.Master" AutoEventWireup="true" CodeBehind="listadoVehiculosRetrasados.aspx.cs" Inherits="Rentadora_Web.listadoVehiculosRetrasados" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
 

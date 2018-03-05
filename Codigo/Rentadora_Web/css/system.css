@@ -349,10 +349,18 @@ table th {
 
 #footerContent_lblEstado{
     font-family:"SourceSansPro-Bold";
-    color:red;
     font-size: 1.17em;
 }
 
 select:disabled{
     background-color:#cbcbcb !important;
+}
+
+
+.green {
+    color:green;
+}
+
+.red{
+    color:red;
 }

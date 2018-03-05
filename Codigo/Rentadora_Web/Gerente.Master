@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Gerente.Master.cs" Inherits="Rentadora_Web.Gerente" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/fonts.css" rel="stylesheet" />
+    <link href="css/system.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class="container">
+        <form method="post" runat="server">
+        <header id="header">
+            <div class="logo">
+                <asp:Button ID="btnCerrarSesion" runat="server" Text="Cerrar Sesion" OnClick="btnCerrarSesion_Click" />
+            </div>
+        </header>
+        <nav>
+           <ul>
+                <li><a href="listadoVehiculosRetrasados.aspx"><span class="icon-list2"> </span><span class="info">Listado vehiculos retrasados</span></a></li> 
+           </ul>
+        </nav>
+        <section>
+          <div class="sectionContainer">
+            <div id="section">
+              <header>
+                  <h3><asp:ContentPlaceHolder ID="sectionTitle" runat="server"></asp:ContentPlaceHolder></h3>
+              </header>
+              <article>
+                  <div id="form">
+                  <asp:ContentPlaceHolder ID="articleContent" runat="server">
+                      
+
+                      
+                  </asp:ContentPlaceHolder>
+                  </div>
+              </article>
+              <footer>
+                  <asp:ContentPlaceHolder ID="footerContent" runat="server"></asp:ContentPlaceHolder>
+              </footer>
+            </div>
+          </div>
+        </section>
+
+        <footer>
+
+        </footer>
+            </form>
+    </div>
+</body>
+</html>

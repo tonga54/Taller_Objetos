@@ -38,7 +38,7 @@ namespace Rentadora_Dominio
                 string devolucion = null;
                 for (int i = 0; i < this.fotos.Count; i++)
                 {
-                    devolucion += "<img src='" + this.fotos[i] + "'>";
+                    devolucion += "<img src='" + this.fotos[i] + "' class='imagenes'>";
                 }
                 return devolucion;
             }

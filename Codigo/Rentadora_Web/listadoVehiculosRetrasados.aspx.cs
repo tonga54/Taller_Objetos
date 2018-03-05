@@ -17,11 +17,7 @@ namespace Rentadora_Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["rol"].ToString() != "gerente")
-            {
-                Response.Redirect("index.aspx");
-                Session.Clear();
-            }
+
         }
 
         protected void btnListar_Click(object sender, EventArgs e)

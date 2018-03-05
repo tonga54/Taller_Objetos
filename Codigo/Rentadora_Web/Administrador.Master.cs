@@ -8,7 +8,7 @@ using Rentadora_Aplicacion;
 
 namespace Rentadora_Web
 {
-    public partial class Usuario : System.Web.UI.MasterPage
+    public partial class Administrador : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,23 +17,12 @@ namespace Rentadora_Web
             {
                 Response.Redirect("index.aspx");
             }
-            else
+
+            if (Session["rol"].ToString() != "administrador")
             {
-                string rol = Session["rol"].ToString();
-
-                if (rol == "gerente")
-                {
-                    pnlUsuario.Visible = false;
-                    pnlGerente.Visible = true;
-                }
-                else
-                {
-                    pnlUsuario.Visible = true;
-                    pnlGerente.Visible = false;
-                }
-
+                Session.Clear();
+                Response.Redirect("index.aspx");
             }
-
         }
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Usuario.Master" AutoEventWireup="true" CodeBehind="devolverVehiculo.aspx.cs" Inherits="Rentadora_Web.devolverVehiculo" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vendedor.Master" AutoEventWireup="true" CodeBehind="devolverVehiculo.aspx.cs" Inherits="Rentadora_Web.devolverVehiculo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         table th{
@@ -7,6 +7,20 @@
 
         table{
             text-align:center;
+        }
+
+        #form{
+            width: 90% !important;
+        }
+
+        #articleContent_pnlPaso1{
+            width: 40%;
+            margin: 0 auto;
+        }
+
+        #articleContent_pnlPaso2{
+            width:40%;
+            margin: 0 auto;
         }
     </style> 
 </asp:Content>
@@ -33,11 +47,11 @@
 
 
     <asp:Panel ID="pnlPaso2" runat="server">
-
         <asp:Label ID="Label9" runat="server" Text="Vehiculos"></asp:Label>
         <asp:DropDownList ID="ddlMatriculas" runat="server" ValidationGroup="manejoVehiculos" AutoPostBack="True" OnSelectedIndexChanged="ddlMatriculas_SelectedIndexChanged" ></asp:DropDownList>
+    </asp:Panel>
 
-        <asp:Label ID="Label4" runat="server" Text="Coches"></asp:Label>
+    <asp:Panel ID="pnlGridView" runat="server">
         <asp:GridView ID="grdVehiculos" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="grdVehiculos_SelectedIndexChanged" OnSelectedIndexChanging="grdVehiculos_SelectedIndexChanging">
             <Columns>
                 <asp:BoundField DataField="FechaIniCorta" HeaderText="Inicio" />
@@ -50,38 +64,16 @@
                 <asp:BoundField DataField="vehiculo.Fotos" HeaderText="Fotos" HtmlEncode="False" HtmlEncodeFormatString="False" />
                 <asp:BoundField DataField="Monto" HeaderText="Costo" HtmlEncode="False" HtmlEncodeFormatString="False" />
                 <asp:BoundField DataField="MontoFaltante" HeaderText="Monto Faltante" HtmlEncode="False" HtmlEncodeFormatString="False" />
-                
+                <asp:CommandField HeaderText="" ShowSelectButton="True" SelectText="Devolver" />
             </Columns>
         </asp:GridView>
-
     </asp:Panel>
 
-    <asp:Panel runat="server" ID="pnlPaso3">
-
-        <asp:Label ID="Label1" runat="server" Text="Fecha inicio"></asp:Label>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFechaInicio" ErrorMessage="Fecha inicio vacia" Display="Dynamic" ValidationGroup="registrarAlquiler">*</asp:RequiredFieldValidator>
-        <asp:TextBox ID="txtFechaInicio" runat="server" TextMode="Date" ValidationGroup="registrarAlquiler"></asp:TextBox>
-
-        <asp:Label ID="Label7" runat="server" Text="Fecha fin"></asp:Label>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtFechaFin" ErrorMessage="Fecha de fin vacia" Display="Dynamic" ValidationGroup="registrarAlquiler">*</asp:RequiredFieldValidator>
-        <asp:TextBox ID="txtFechaFin" runat="server" TextMode="Date" ValidationGroup="registrarAlquiler"></asp:TextBox>
-
-        <asp:Label ID="Label15" runat="server" Text="Hora inicio"></asp:Label>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtHoraInicio" ErrorMessage="Hora de inicio vacia" Display="Dynamic" ValidationGroup="registrarAlquiler">*</asp:RequiredFieldValidator>
-        <asp:TextBox ID="txtHoraInicio" runat="server" TextMode="Time" ValidationGroup="registrarAlquiler"></asp:TextBox>
-
-        <asp:Label ID="Label16" runat="server" Text="Hora fin"></asp:Label>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtHoraFin" ErrorMessage="Hora de fin vacia" Display="Dynamic" ValidationGroup="registrarAlquiler">*</asp:RequiredFieldValidator>
-        <asp:TextBox ID="txtHoraFin" runat="server" TextMode="Time" ValidationGroup="registrarAlquiler"></asp:TextBox>
-    
-        <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnPaso3_Click" ValidationGroup="registrarAlquiler"/>
-
-        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="registrarAlquiler" />
-    </asp:Panel>
-
-    
     <div style="clear:both;"></div>
 </asp:Content>
+
 <asp:Content ID="Content5" ContentPlaceHolderID="footerContent" runat="server">
     <asp:Label ID="lblEstado" runat="server"></asp:Label>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/JavaScript.js"></script>
 </asp:Content>
