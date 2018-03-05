@@ -81,9 +81,13 @@ namespace Rentadora_Dominio
             List<String> devolucion = new List<string>();
             for(int i = 0; i < this.tiposVehiculos.Count; i++)
             {
-                if(this.tiposVehiculos[i].Marca == marca)
+                
+                if (this.tiposVehiculos[i].Marca == marca)
                 {
-                    devolucion.Add(this.tiposVehiculos[i].Modelo);
+                    if (!devolucion.Contains(this.tiposVehiculos[i].Modelo))
+                    {
+                        devolucion.Add(this.tiposVehiculos[i].Modelo);
+                    }
                 }
             }
 

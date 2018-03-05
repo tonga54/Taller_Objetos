@@ -48,7 +48,6 @@
                 <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" ToolTip="Contraseña" PlaceHolder="Password"></asp:TextBox>
                 <asp:Button ID="btnIngresar" runat="server" Text="Ingregar" OnClick="btnIngresar_Click"/>
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
-                <a href="registro.aspx" id="register" class="register">No tienes una cuenta? Registrate</a>
 
                 <div id="foot">
                     <asp:Label ID="lblEstado" runat="server"></asp:Label>

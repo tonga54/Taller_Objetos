@@ -334,14 +334,6 @@ namespace Rentadora_Aplicacion
             Rentadora.Instancia.registrarUsuario("administrador1", "administrador1", "administrador");
             Rentadora.Instancia.registrarUsuario("vendedor1", "vendedor1", "vendedor");
             Rentadora.Instancia.registrarUsuario("charly", "1234", "vendedor");
-            //Rentadora.instancia.cargarTIposVehiculos("Volskwagen", "C4", 500);
-            //Rentadora.instancia.cargarTIposVehiculos("Chevrolet", "V4", 200);
-
-            //List<string> img = new List<string> { "img/1.jpeg", "img/2.jpeg", "img/3.jpeg" };
-            //CVehiculo.Instancia.cargarVehiculos("CXX-4872", new DateTime(), 15000, img, CTipoVehiculo.Instancia.TipoVehiculos[0]);
-
-            //img = new List<string> { "img/4.jpeg", "img/5.jpeg", "img/6.jpeg" };
-            //CVehiculo.Instancia.cargarVehiculos("CXX-4872", new DateTime(), 15000, img, CTipoVehiculo.Instancia.TipoVehiculos[1]);
         }
 
         public void preCargarAlquileres()

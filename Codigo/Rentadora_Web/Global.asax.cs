@@ -30,13 +30,15 @@ namespace Rentadora_Web
             }
             */
 
+            if (File.Exists(tiposVehiculos))
+            {
+                Rentadora.Instancia.leerDatosTiposVehiculos(tiposVehiculos);
+            }
             if (File.Exists(vehiculos))
             {
                 Rentadora.Instancia.leerDatosVehiculos(vehiculos);
-            }else
-            {
-
             }
+            
 
             Rentadora.Instancia.preCargarAlquileres();
 
