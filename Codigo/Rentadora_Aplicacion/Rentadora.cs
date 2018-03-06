@@ -31,56 +31,39 @@ namespace Rentadora_Aplicacion
         public Usuario autenticarse(string nombre, string contrasenia)
         {
             Usuario usr = null;
-            if (nombre != "" && contrasenia != "")
-            {
-                usr = CUsuario.Instancia.buscarUsuario(nombre, contrasenia);
-            }
-
+            usr = CUsuario.Instancia.buscarUsuario(nombre, contrasenia);
             return usr;
         }
 
         public string nombreUsuario(Usuario usu)
         {
-            string retorno = "";
-            if(usu != null)
-            {
-                retorno = CUsuario.Instancia.nombre(usu);
-            }
+            string retorno = CUsuario.Instancia.nombre(usu);   
             return retorno;
         }
 
         public string rolUsuario(Usuario usu)
         {
-            string retorno = "";
-            if (usu != null)
-            {
-                retorno = CUsuario.Instancia.rol(usu);
-            }
+            string retorno = CUsuario.Instancia.rol(usu);
             return retorno;
         }
 
-        public bool registrarUsuario(string nombre, string contrasenia, string rol)
+        public string registrarUsuario(string nombre, string contrasenia, string rol)
         {
-            bool devolucion = false;
-            if(nombre != "" && contrasenia != "" && rol != "")
-            {
-                devolucion = CUsuario.Instancia.registrarUsuario(nombre, contrasenia, rol);
-            }
-
+            string devolucion = CUsuario.Instancia.registrarUsuario(nombre, contrasenia, rol);
             return devolucion;
         }
 
         //Particular
-        public bool agregarCliente(int telefono, string documento, string tipoDocumento, string pais, string nombre, string apellido)
+        public string agregarCliente(int telefono, string documento, string tipoDocumento, string pais, string nombre, string apellido)
         {
-            bool devolucion = CCliente.Instancia.agregarCliente(telefono, documento, tipoDocumento, pais, nombre, apellido);
+            string devolucion = CCliente.Instancia.agregarCliente(telefono, documento, tipoDocumento, pais, nombre, apellido);
             return devolucion;
         }
 
         //Empresa
-        public bool agregarCliente(int telefono, int rut, string razonSocial, string nombre, int anio)
+        public string agregarCliente(int telefono, long rut, string razonSocial, string nombre, int anio)
         {
-            bool devolucion = CCliente.Instancia.agregarCliente(telefono, rut, razonSocial, nombre, anio);
+            string devolucion = CCliente.Instancia.agregarCliente(telefono, rut, razonSocial, nombre, anio);
             return devolucion;
         }
 
@@ -122,36 +105,6 @@ namespace Rentadora_Aplicacion
 
         }
 
-        public void leerArchivo(string rutaArchivo)
-        {
-            StreamReader str = null;
-            string linea = "";
-            try
-            {
-                FileStream stream = new FileStream(rutaArchivo, FileMode.Open);
-                str = new StreamReader(stream);
-
-                while ((linea = str.ReadLine()) != null)
-                {
-                    string[] datos = linea.Split('@');   
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception();
-            }
-            finally
-            {
-                if(str != null)
-                {
-
-                }
-                str.Close();
-            }
-
-        }
-
-
         public void leerDatosVehiculos(string rutaArchivo)
         {
 
@@ -177,7 +130,10 @@ namespace Rentadora_Aplicacion
                     TipoVehiculo tipoVeh = this.buscarTipoVehiculo(marca,modelo);
                     if(tipoVeh != null)
                     {
-                        this.cargarVehiculos(matricula, anio, kilometraje, fotos,tipoVeh);
+                        if (buscarVehiculoXMatricula(matricula) == null)
+                        {
+                            this.cargarVehiculo(matricula, anio, kilometraje, fotos, tipoVeh);
+                        }
                     }
                     
                 }
@@ -208,7 +164,11 @@ namespace Rentadora_Aplicacion
                     string modelo = datos[1];
                     decimal precioDiario = 0;
                     decimal.TryParse(datos[2], out precioDiario);
-                    this.cargarTIposVehiculos(marca, modelo, precioDiario);
+
+                    if (buscarTipoVehiculo(modelo, marca) == null)
+                    {
+                        this.cargarTipoVehiculo(marca, modelo, precioDiario);
+                    }
                 }
             }
             catch (Exception ex)
@@ -247,16 +207,10 @@ namespace Rentadora_Aplicacion
             return cli;
         }
 
-        public bool devolverVehiculo(string matricula)
+        public string devolverVehiculo(string matricula)
         {
-            bool devolucion = false;
             Vehiculo veh = buscarVehiculoXMatricula(matricula);
-
-            if (veh != null)
-            {
-                devolucion = CAlquiler.Instancia.devolverVehiculo(veh);
-            }
-
+            string devolucion = CAlquiler.Instancia.devolverVehiculo(veh);
             return devolucion;
         }
 
@@ -276,24 +230,8 @@ namespace Rentadora_Aplicacion
         public string alquilarVehiculo(DateTime fechaIni, DateTime fechaFin, int horaIni, int horaFIn, string matricula, string documento)
         {
             Vehiculo veh = CVehiculo.Instancia.comprobarDisponibilidad(matricula);
-            string devolucion = "";
-            if(veh != null)
-            {
-                Cliente cli = buscarCliente(documento);
-                if (cli != null)
-                {
-                    CAlquiler.Instancia.registrarAlquiler(cli, veh, horaIni, horaFIn, fechaIni, fechaFin);
-                }
-                else
-                {
-                    devolucion = "No existe el cliente";
-                }
-
-            }else
-            {
-                devolucion = "El vehiculo ya no esta disponible";
-            }
-
+            Cliente cli = buscarCliente(documento);
+            string devolucion = CAlquiler.Instancia.registrarAlquiler(cli, veh, horaIni, horaFIn, fechaIni, fechaFin);
             return devolucion;
         }
 
@@ -313,27 +251,24 @@ namespace Rentadora_Aplicacion
            return CTipoVehiculo.Instancia.listarModelos(marca);
         }
 
-        public bool cargarTIposVehiculos(string modelo, string marca, decimal precioDiario)
+        public string cargarTipoVehiculo(string modelo, string marca, decimal precioDiario)
         {
-            CTipoVehiculo.Instancia.cargarTipos(modelo, marca, precioDiario);
-            return false; // cambiar
+           string resultado = CTipoVehiculo.Instancia.cargarTipo(modelo, marca, precioDiario);
+           return resultado;
         }
 
-        public bool cargarVehiculos(string matricula, int anio, decimal kilometraje,List<string> fotos, TipoVehiculo tipoVehiculo)
+        public string cargarVehiculo(string matricula, int anio, decimal kilometraje,List<string> fotos, TipoVehiculo tipoVehiculo)
         {
-            CVehiculo.Instancia.cargarVehiculos(matricula, anio, kilometraje, fotos, tipoVehiculo);
-            return false; // cambiar
+            string resultado = CVehiculo.Instancia.cargarVehiculo(matricula, anio, kilometraje, fotos, tipoVehiculo);
+            return resultado;
         }
 
         public void preCargarDatos()
         {
-            Rentadora.Instancia.agregarCliente(098125846, 15151212, "Empresa X", "Luis",1980);
-            Rentadora.instancia.cargarTIposVehiculos("Chevrolet", "Onix", 400);
-            Rentadora.Instancia.registrarUsuario("gaston", "1234", "gerente");
+            Rentadora.Instancia.agregarCliente(098125846, 123456789123, "Empresa X", "Luis",1980);
             Rentadora.Instancia.registrarUsuario("charly", "1234", "administrador");
             Rentadora.Instancia.registrarUsuario("administrador1", "administrador1", "administrador");
             Rentadora.Instancia.registrarUsuario("vendedor1", "vendedor1", "vendedor");
-            Rentadora.Instancia.registrarUsuario("charly", "1234", "vendedor");
         }
 
         public void preCargarAlquileres()

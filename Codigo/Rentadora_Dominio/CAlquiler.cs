@@ -55,54 +55,83 @@ namespace Rentadora_Dominio
         public Alquiler buscarAlquiler(Vehiculo veh)
         {
             Alquiler alq = null;
-            int i = 0;
-            while(i < alquileres.Count && alq == null)
+            if(veh != null)
             {
-                if (alquileres[i].Vehiculo.Equals(veh) && !alquileres[i].disponibilidadVehiculo())
+                int i = 0;
+                while (i < alquileres.Count && alq == null)
                 {
-                    alq = alquileres[i];
+                    if (alquileres[i].Vehiculo.Equals(veh) && !alquileres[i].disponibilidadVehiculo())
+                    {
+                        alq = alquileres[i];
+                    }
+
+                    i++;
                 }
 
-                i++;
             }
-            
+
             return alq;
         }
 
-        public bool devolverVehiculo(Vehiculo veh)
+        public string devolverVehiculo(Vehiculo veh)
         {
             Alquiler alq = buscarAlquiler(veh);
-            bool devolucion = false;
+            string devolucion = "";
 
             if (alq != null)
             {
-                devolucion = alq.devolverVehiculo();
+                if (alq.devolverVehiculo())
+                {
+                    devolucion = "CORRECTO: Vehiculo devuelto con exito";
+                }else
+                {
+                    devolucion = "ERROR: Fallo al devolver el vehiculo";
+                }
+            }else
+            {
+                devolucion = "ERROR: Alquiler inexistente";
             }
 
             return devolucion;
         }
         
-        public void registrarAlquiler(Cliente cliente, Vehiculo vehiculo, int horaInicio, int horaFin, DateTime fechaInicio, DateTime fechaFin)
+        public string registrarAlquiler(Cliente cliente, Vehiculo vehiculo, int horaInicio, int horaFin, DateTime fechaInicio, DateTime fechaFin)
         {
-            //int devolucion;
-
-            Alquiler alq = new Alquiler(cliente, vehiculo, horaInicio, horaFin, fechaInicio, fechaFin);
-            
-                        
-
-            /*if (verificarHoras(horaInicio, horaFin) == 0)
+            string devolucion = "";
+            if(cliente != null)
             {
-                if (verificarFechas(fechaInicio, fechaFin))
-                {*/
-                    alquileres.Add(alq);
-                    /*devolucion = 0;
+                if (vehiculo != null)
+                {
+                    if (verificarHoras(horaInicio, horaFin))
+                    {
+                        if (verificarFechas(fechaInicio, fechaFin))
+                        {
+                            Alquiler alq = new Alquiler(cliente, vehiculo, horaInicio, horaFin, fechaInicio, fechaFin);
+                            alquileres.Add(alq);
+                            string costo = alq.calcularCosto().ToString();
+                            devolucion = "CORRECTO: Alquiler agregado con exito<br>Costo: " + costo;
+                        }
+                        else
+                        {
+                            devolucion = "ERROR: Fechas invalidas";
+                        }
+                    }
+                    else
+                    {
+                        devolucion = "ERROR: Horas invalidas";
+                    }
                 }
-                
+                else
+                {
+                    devolucion = "ERROR: Vehiculo invalido";
+                } 
             }
             else
             {
-                devolucion = 1;
-            }*/
+                devolucion = "ERROR: Cliente invalido";
+            }
+
+            return devolucion;
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
@@ -172,51 +201,51 @@ namespace Rentadora_Dominio
             return devolucion;
         }
 
-        public int verificarFechas(DateTime fecha1, DateTime fecha2)
+        public bool verificarFechas(DateTime fecha1, DateTime fecha2)
         {
 
-            int devolucion = 1;
+            bool devolucion = false;
 
             if (fecha1 < fecha2 && fecha1 >= DateTime.Today && fecha2 >= DateTime.Today)
             {
-                devolucion = 0;
+                devolucion = true;
             }
 
             return devolucion;
 
         }
 
-        public int verificarHoras(int hora1, int hora2)
+        public bool verificarHoras(int hora1, int hora2)
         {
-            int devolucion = 2;
+            bool devolucion = false;
 
-            if(hora1 >= 1 && hora1 <= 24 && hora1 < hora2)
+            if(hora1 >= 1 && hora1 <= 24 && hora2 >= 1 && hora2 <= 24)
             {
-                devolucion = 0;
+                devolucion = true;
             }
 
             return devolucion;
         }
 
-        public int verificarTextos(string texto)
+        public bool verificarTextos(string texto)
         {
-            int devolucion = 3;
+            bool devolucion = false;
 
             if (texto.Length >= 1)
             {
-                devolucion = 0;
+                devolucion = true;
             }
 
             return devolucion;
         }
 
-        public int verificarNumericos(int entero, decimal numerico)
+        public bool verificarNumericos(int entero, decimal numerico)
         {
-            int devolucion = 4;
+            bool devolucion = false;
 
             if (entero >= 1 && numerico >= 1)
             {
-                devolucion = 0;
+                devolucion = true;
             }
 
             return devolucion;

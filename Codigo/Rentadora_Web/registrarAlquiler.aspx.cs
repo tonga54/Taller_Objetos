@@ -101,11 +101,17 @@ namespace Rentadora_Web
             DateTime.TryParse(fechaInicio, out fechaInicioAux);
             DateTime.TryParse(fechaFin, out fechaFinAux);
 
-            Rentadora.Instancia.alquilarVehiculo(fechaInicioAux, fechaFinAux, horaInicioAux, horaFinAux, matricula, documento);
-            List<Alquiler> alq = Rentadora.Instancia.buscarAlquilerXMatricula(matricula);
-            lblEstado.Text = "<span class='green'>Alquiler ingresado con éxito: Costo $" + Math.Round(alq[0].calcularCosto()).ToString() + "</span>";
-            btnRegistrar.Visible = false;
+            string devolucion = Rentadora.Instancia.alquilarVehiculo(fechaInicioAux, fechaFinAux, horaInicioAux, horaFinAux, matricula, documento);
 
+            string respuesta = Vendedor.analizarRespuesta(devolucion);
+            if (respuesta.IndexOf("CORRECTO") > -1)
+            {
+                pnlPaso1.Visible = false;
+                pnlPaso2.Visible = false;
+                pnlPaso3.Visible = false;
+            }
+
+            lblEstado.Text = respuesta;
         }
 
         protected void ddlMarca_SelectedIndexChanged(object sender, EventArgs e)

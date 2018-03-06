@@ -23,22 +23,8 @@
         </header>
         <nav>
            <ul>
-<<<<<<< HEAD:Codigo/Rentadora_Web/Usuario.Master
-                <li><a href="inicio.aspx"><span class="icon-home"> </span><span class="info">Inicio</span></a></li>
-                <asp:Panel runat="server" ID="pnlUsuario">
-                    <li><a href="registrarAlquiler.aspx"><span class="icon-database"> </span><span class="info">Registrar alquiler</span></a></li>
-                    <li><a href="registrarCliente.aspx"><span class="icon-database"> </span><span class="info">Registrar cliente</span></a></li>
-                    <li><a href="devolverVehiculo.aspx"><span class="icon-profile"> </span><span class="info">Devolucion de vehiculos</span></a></li>
-                </asp:Panel>
-                <asp:Panel runat="server" ID="pnlGerente">
-                    <li><a href="listadoVehiculosRetrasados.aspx"><span class="icon-list2"> </span><span class="info">Listado vehiculos retrasados</span></a></li> 
-                    <!--<li><a href="agregarServiciosAEvento.aspx"><span class="icon-profile"> </span><span class="info">Listado vehiculos retrasados</span></a></li>-->
-                </asp:Panel>
-=======
+                <li><a href="cargarTiposDeVehiculos.aspx"><span class="icon-database"> </span><span class="info">Cargar tipos de vehiculos</span></a></li>
                 <li><a href="cargarVehiculos.aspx"><span class="icon-database"> </span><span class="info">Cargar vehiculos</span></a></li>
-                <li><a href="cargarTiposDeVehiculos.aspx"><span class="icon-profile"> </span><span class="info">Cargar tipos de vehiculos</span></a></li>
-                <!--<li><a href="listadoVehiculosRetrasados.aspx"><span class="icon-list2"> </span><span class="info">Listado vehiculos retrasados</span></a></li>-->
->>>>>>> vehdev:Codigo/Rentadora_Web/Administrador.Master
            </ul>
         </nav>
         <section>

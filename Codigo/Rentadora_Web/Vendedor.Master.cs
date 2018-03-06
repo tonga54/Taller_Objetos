@@ -30,5 +30,20 @@ namespace Rentadora_Web
             Session.Clear();
             Response.Redirect("index.aspx");
         }
+
+        public static string analizarRespuesta(string respuesta)
+        {
+            string devolucion = "";
+            if(respuesta.IndexOf("ERROR") > -1){
+                devolucion += "<label class='red'>" + respuesta + "</label>";
+            }else if(respuesta.IndexOf("CORRECTO") > -1)
+            {
+                devolucion += "<label class='green'>" + respuesta + "</label>";
+            }else
+            {
+                devolucion = respuesta;
+            }
+            return devolucion;
+        }
     }
 }

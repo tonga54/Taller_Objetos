@@ -21,98 +21,87 @@ namespace Rentadora_Web
 
             if (!IsPostBack)
             {
-                btnRegistrar.Visible = false;
-
                 pnlPaso1.Visible = true;
-                pnlPaso2.Visible = false;
-                pnlPaso3.Visible = false;
-
-            }
-            else
-            {
-
-                Session["tipoCliente"] = ddlTipoCliente.SelectedValue.ToString();
-                
-                switch (Session["tipoCliente"].ToString())
+                pnlParticular.Visible = false;
+                pnlParticular.Visible = false;
+                string tipoCliente = Request.QueryString["tc"];
+                if (tipoCliente != null && tipoCliente != "")
                 {
-                    case "P":
-                        pnlPaso1.Visible = false;
-                        pnlPaso2.Visible = true;
-                        btnRegistrar.Visible = true;
-                        break;
-                    case "E":
-                        pnlPaso1.Visible = false;
-                        pnlPaso3.Visible = true;
-                        btnRegistrar.Visible = true;
-                        break;
-                    default:
-                        lblEstado.Text = "Debe seleccionar un tipo de cliente";
-                        break;
+                    switch (tipoCliente)
+                    {
+                        case "P":
+                            pnlPaso1.Visible = false;
+                            pnlParticular.Visible = true;
+                            pnlEmpresa.Visible = false;
+                            break;
+                        case "E":
+                            pnlPaso1.Visible = false;
+                            pnlParticular.Visible = false;
+                            pnlEmpresa.Visible = true;
+                            break;
+                        default:
+                            Response.Redirect("registrarCliente.aspx");
+                            break;
+                    }
                 }
+                else
+                {
+                    pnlPaso1.Visible = true;
+                    pnlEmpresa.Visible = false;
+                    pnlParticular.Visible = false;
+                }
+
             }
         }
 
-        protected void btnPaso3_Click(object sender, EventArgs e)
+        protected void btnParticular_Click(object sender, EventArgs e)
         {
-
-            string nombre;
-            string telefono;
-
-            if (Session["tipoCliente"].ToString() == "P")
+            int telefono = 0;
+            int.TryParse(txtTelefonoParticular.Text, out telefono);
+            string documento = txtDocumento.Text;
+            string tipoDocumento = ddlTipoDocumento.Text;
+            string pais = ddlPais.Text;
+            string nombre = txtNombreParticular.Text;
+            string apellido = txtApellidoParticular.Text;
+   
+            string response = Rentadora.Instancia.agregarCliente(telefono, documento, tipoDocumento, pais, nombre, apellido);
+            response = Vendedor.analizarRespuesta(response);
+            lblEstado.Text = response;
+            if (response.IndexOf("CORRECTO") > -1)
             {
-                nombre = txtNombre1.Text;
-                telefono = txtTelefono1.Text;
+                pnlPaso1.Visible = false;
+                pnlEmpresa.Visible = false;
+                pnlParticular.Visible = false;
             }
-            else
+        }
+
+
+        protected void btnEmpresa_Click(object sender, EventArgs e)
+        {            
+            int telefono = 0;
+            int.TryParse(txtTelefonoEmpresa.Text, out telefono);
+            long rut = 0;
+            long.TryParse(txtRut.Text, out rut);
+            string razonSocial = txtRazonSocial.Text;
+            string nombre = txtNombreEmpresa.Text;
+            int anio = 0;
+            int.TryParse(txtAnio.Text, out anio);
+
+            string response = "";
+            response = Rentadora.Instancia.agregarCliente(telefono, rut, razonSocial, nombre, anio);
+            response = Vendedor.analizarRespuesta(response);
+            lblEstado.Text = response;
+            if(response.IndexOf("CORRECTO") > -1)
             {
-                nombre = txtNombre2.Text;
-                telefono = txtTelefono2.Text;
+                pnlPaso1.Visible = false;
+                pnlEmpresa.Visible = false;
+                pnlParticular.Visible = false;
             }
-       
-            string apellido = txtApellido1.Text;
-            string documento = txtDocumento1.Text;
-            string tipoDocumento = ddlTipoCliente1.SelectedValue.ToString();
-            string pais = ddlPais1.SelectedValue.ToString();
-            string razonSocial = txtRazonSocial1.Text;
-            string rut = txtRut1.Text;
-            string anio = txtAnio1.Text;
-            int rutAux = -1;
-            int anioAux = -1;
-            int telefonoAux = -1;        
-
-            if (rut != "")
-            {
-                int.TryParse(rut, out rutAux);
-            }
-
-            if (anio != "")
-            {
-                int.TryParse(anio, out anioAux);
-            }
-
-            if (telefono != "")
-            {
-                int.TryParse(telefono, out telefonoAux);
-            }
-
-            switch (Session["tipoCliente"].ToString())
-            {
-                case "P":
-                    Rentadora.Instancia.agregarCliente(telefonoAux, documento, tipoDocumento, pais, nombre, apellido);
-                    break;
-                case "E":
-                    Rentadora.Instancia.agregarCliente(telefonoAux, rutAux, razonSocial, nombre, anioAux);
-                    break;
-            }
-
-            lblEstado.Text = "<span class='green'>Cliente ingresado con éxito</span>";
-            btnRegistrar.Visible = false;
-
         }
 
         protected void ddlTipoCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            Response.Redirect("registrarCliente.aspx?tc=" + ddlTipoCliente.Text);
         }
     }
 }

@@ -33,7 +33,7 @@ namespace Rentadora_Web
                     
                     if(rolUsuario == "administrador")
                     {
-                        Response.Redirect("");
+                        Response.Redirect("cargarVehiculos.aspx");
                     }else if(rolUsuario == "vendedor")
                     {
                         Response.Redirect("registrarAlquiler.aspx");

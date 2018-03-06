@@ -71,9 +71,19 @@ namespace Rentadora_Dominio
             return bandera;
         }
 
-        public void cargarTipos(string marca, string modelo, decimal precio)
+        public string cargarTipo(string marca, string modelo, decimal precio)
         {
-            this.tiposVehiculos.Add(new TipoVehiculo(marca, modelo, precio));
+            string devolucion = "";
+            if(marca != "" && modelo != "" && precio > 0)
+            {
+                this.tiposVehiculos.Add(new TipoVehiculo(marca, modelo, precio));
+                devolucion = "CORRECTO: Tipo de vehiculo agregado con exito";
+            }else
+            {
+                devolucion = "ERROR: Algun dato esta incorrecto";
+            }
+
+            return devolucion;
         }
 
         public List<String> listarModelos(string marca)
@@ -96,17 +106,21 @@ namespace Rentadora_Dominio
 
         public TipoVehiculo buscarTipoVehiculo(string marca, string modelo)
         {
-            int i = 0;
             TipoVehiculo tipoVeh = null;
-            while (i < tiposVehiculos.Count && tipoVeh == null)
+            if(marca != "" && modelo != "")
             {
-                if(tiposVehiculos[i].Marca == marca && tiposVehiculos[i].Modelo == modelo)
+                int i = 0;
+                while (i < tiposVehiculos.Count && tipoVeh == null)
                 {
-                    tipoVeh = tiposVehiculos[i];
-                }
+                    if (tiposVehiculos[i].Marca == marca && tiposVehiculos[i].Modelo == modelo)
+                    {
+                        tipoVeh = tiposVehiculos[i];
+                    }
 
-                i++;
+                    i++;
+                }
             }
+            
 
             return tipoVeh;
 

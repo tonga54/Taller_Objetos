@@ -12,6 +12,7 @@ namespace Rentadora_Web
     public class Global : System.Web.HttpApplication
     {
 
+
         protected void Application_Start(object sender, EventArgs e)
         {
             string serializado = HttpRuntime.AppDomainAppPath + @"binario\serial.bin";

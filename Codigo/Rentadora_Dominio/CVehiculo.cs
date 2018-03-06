@@ -60,42 +60,60 @@ namespace Rentadora_Dominio
 
         public List<Vehiculo> vehiculosDisponibles(string marca, string modelo)
         {
-            int i = 0;
             List<Vehiculo> vehiculosAux = new List<Vehiculo>();
-
-            while (i < vehiculos.Count)
+            if(marca != "" && modelo != "")
             {
-                if (vehiculos[i].TipoVehiculo.Marca == marca && vehiculos[i].TipoVehiculo.Modelo == modelo && vehiculos[i].Disponible)
+                int i = 0;
+                while (i < vehiculos.Count)
                 {
-                    vehiculosAux.Add(vehiculos[i]);
+                    if (vehiculos[i].TipoVehiculo.Marca == marca && vehiculos[i].TipoVehiculo.Modelo == modelo && vehiculos[i].Disponible)
+                    {
+                        vehiculosAux.Add(vehiculos[i]);
+                    }
+                    i++;
                 }
-                i++;
             }
-
+            
             return vehiculosAux;
         }
 
         public Vehiculo buscarVehiculoXMatricula(string matricula)
         {
-            int i = 0;
             Vehiculo veh = null;
-            while(i < vehiculos.Count && veh == null)
+            if (matricula != "")
             {
-                if(vehiculos[i].Matricula == matricula)
+                int i = 0;
+                
+                while (i < vehiculos.Count && veh == null)
                 {
-                    veh = vehiculos[i];
+                    if (vehiculos[i].Matricula == matricula)
+                    {
+                        veh = vehiculos[i];
+                    }
+                    i++;
                 }
-                i++;
             }
-
+            
             return veh;
         }
 
-        public void cargarVehiculos(string matricula, int anio, decimal kilometraje, List<string> fotos, TipoVehiculo tipoVehiculo)
+        public string cargarVehiculo(string matricula, int anio, decimal kilometraje, List<string> fotos, TipoVehiculo tipoVehiculo)
         {
-            Vehiculo veh = new Vehiculo(matricula,anio,kilometraje,fotos,tipoVehiculo);
-            this.vehiculos.Add(veh);
+            string devolucion = "";
+            if (matricula != "" && anio > 1800 && anio <= DateTime.Now.Year && kilometraje >= 0 && fotos.Count > 0 && tipoVehiculo != null)
+            {
+                Vehiculo veh = new Vehiculo(matricula, anio, kilometraje, fotos, tipoVehiculo);
+                vehiculos.Add(veh);
+                devolucion = "CORRECTO: Vehiculo cargado con exito";
+            }else
+            {
+                devolucion = "ERROR: Algun dato ha sido ingresado de manera incorrecta";
+            }
+
+            return devolucion;
         }
+
+
 
     }
 }

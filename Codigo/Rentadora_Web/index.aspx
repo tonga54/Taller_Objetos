@@ -18,7 +18,7 @@
             var mensaje = "ERROR\n";
 
             if (user == "") {
-                mensaje += "El email esta vacio";
+                mensaje += "El usuario esta vacio";
                 bandera = false;
             }
 
@@ -43,7 +43,7 @@
             <span class="loginTitle" id="loginTitle">Iniciar Sesion</span>
             <!-- <label for=txtUser"">Usuario</label> -->
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtUser" ErrorMessage="Nombre de usuario requerido">*</asp:RequiredFieldValidator>
-                <asp:TextBox ID="txtUser" runat="server" ToolTip="Usuario" PlaceHolder="Email"></asp:TextBox>
+                <asp:TextBox ID="txtUser" runat="server" ToolTip="Usuario" PlaceHolder="Usuario"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtPassword" ErrorMessage="Password requerido">*</asp:RequiredFieldValidator>
                 <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" ToolTip="Contraseña" PlaceHolder="Password"></asp:TextBox>
                 <asp:Button ID="btnIngresar" runat="server" Text="Ingregar" OnClick="btnIngresar_Click"/>

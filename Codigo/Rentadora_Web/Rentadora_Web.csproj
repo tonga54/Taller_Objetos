@@ -117,6 +117,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cargarTiposDeVehiculos.aspx" />
+    <Content Include="cargarVehiculos.aspx" />
     <Content Include="css\fonts.css" />
     <Content Include="css\index.css" />
     <Content Include="css\style %282%29.css" />
@@ -166,6 +168,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cargarTiposDeVehiculos.aspx.cs">
+      <DependentUpon>cargarTiposDeVehiculos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cargarTiposDeVehiculos.aspx.designer.cs">
+      <DependentUpon>cargarTiposDeVehiculos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cargarVehiculos.aspx.cs">
+      <DependentUpon>cargarVehiculos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cargarVehiculos.aspx.designer.cs">
+      <DependentUpon>cargarVehiculos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="devolverVehiculo.aspx.cs">
       <DependentUpon>devolverVehiculo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

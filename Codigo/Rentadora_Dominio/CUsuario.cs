@@ -31,17 +31,23 @@ namespace Rentadora_Dominio
 
         }
 
-        public bool registrarUsuario(string nombre,string contrasenia, string rol)
+        public string registrarUsuario(string nombre,string contrasenia, string rol)
         {
-            bool devolucion = false;
-            bool usr = buscarUsuario(nombre);
-            if (!usr)
+            string dev = "";
+            if (nombre != "" && contrasenia != "" && rol != "")
             {
-                usuarios.Add(new Usuario(nombre, contrasenia, rol));
-                devolucion = true;
+                bool usr = buscarUsuario(nombre);
+                if (!usr)
+                {
+                    usuarios.Add(new Usuario(nombre, contrasenia, rol));
+                    dev = "CORRECTO: Usuario registrado correctamente";
+                }
+            }else
+            {
+                dev = "ERROR: Algun dato no corresponde";
             }
-
-            return devolucion;
+            
+            return dev;
         }
 
 
@@ -64,30 +70,46 @@ namespace Rentadora_Dominio
 
         public Usuario buscarUsuario(string nombre, string contrasenia)
         {
-            int i = 0;
             Usuario usr = null;
-
-            while (i < usuarios.Count && usr == null)
+            if (nombre != "" && contrasenia != "")
             {
-                if (usuarios[i].Nombre == nombre && usuarios[i].Contrasenia == contrasenia)
-                {
-                    usr = usuarios[i];
-                }
-                i++;
-            }
+                int i = 0;
 
+                while (i < usuarios.Count && usr == null)
+                {
+                    if (usuarios[i].Nombre == nombre && usuarios[i].Contrasenia == contrasenia)
+                    {
+                        usr = usuarios[i];
+                    }
+                    i++;
+                }
+            }
+            
             return usr;
 
         }
 
         public string nombre(Usuario usu)
         {
-            return usu.Nombre;
+            string dev = null;
+            if(usu != null)
+            {
+                dev = usu.Nombre;
+            }
+
+            return dev;
         }
 
         public string rol(Usuario usu)
         {
-            return usu.Rol;
+            string dev = null;
+            if (usu != null)
+            {
+                dev = usu.Rol;
+            }
+
+            return dev;
+
         }
 
     }

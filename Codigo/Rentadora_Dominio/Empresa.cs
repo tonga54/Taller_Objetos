@@ -9,7 +9,7 @@ namespace Rentadora_Dominio
     public class Empresa : Cliente
     {
         private string razonSocial;
-        private int rut;
+        private long rut;
         private int anio;
 
         public string RazonSocial
@@ -28,7 +28,7 @@ namespace Rentadora_Dominio
             }
         }
 
-        public int Documento
+        public long Documento
         {
             get
             {
@@ -36,7 +36,7 @@ namespace Rentadora_Dominio
             }
         }
 
-        public Empresa(int telefono, int rut, string razonSocial, string nombre, int anio) : base(nombre,telefono)
+        public Empresa(int telefono, long rut, string razonSocial, string nombre, int anio) : base(nombre,telefono)
         {
             this.rut = rut;
             this.razonSocial = razonSocial;
@@ -45,8 +45,8 @@ namespace Rentadora_Dominio
 
         public override bool verificarDocumento(string doc)
         {
-            int rut;
-            int.TryParse(doc, out rut);
+            long rut;
+            long.TryParse(doc, out rut);
             bool retorno = false;
             if (rut == this.rut)
             {

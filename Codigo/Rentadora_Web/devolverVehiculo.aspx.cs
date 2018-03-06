@@ -80,14 +80,8 @@ namespace Rentadora_Web
             lblEstado.Text = "";
             GridViewRow x = grdVehiculos.Rows[e.NewSelectedIndex];
             string matricula = x.Cells[5].Text;
-            bool devolucion = Rentadora.Instancia.devolverVehiculo(matricula);
-            if (devolucion)
-            {
-                lblEstado.Text = "<span class='green'>Vehiculo devuelto correctamente</span>";
-            }else
-            {
-                lblEstado.Text = "<span class='red'>Error al devolver vehiculo</span>";
-            }
+            string devolucion = Rentadora.Instancia.devolverVehiculo(matricula);
+            lblEstado.Text = Vendedor.analizarRespuesta(devolucion);
             
         }
 
