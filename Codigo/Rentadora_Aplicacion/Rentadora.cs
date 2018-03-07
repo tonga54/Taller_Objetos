@@ -266,14 +266,14 @@ namespace Rentadora_Aplicacion
         public void preCargarDatos()
         {
             Rentadora.Instancia.agregarCliente(098125846, 123456789123, "Empresa X", "Luis",1980);
-            Rentadora.Instancia.registrarUsuario("charly", "1234", "administrador");
+            Rentadora.Instancia.registrarUsuario("gerente1", "gerente1", "gerente");
             Rentadora.Instancia.registrarUsuario("administrador1", "administrador1", "administrador");
             Rentadora.Instancia.registrarUsuario("vendedor1", "vendedor1", "vendedor");
         }
 
         public void preCargarAlquileres()
         {
-            Rentadora.Instancia.alquilarVehiculo(new DateTime(2018, 02, 01), new DateTime(2018, 02, 10), 15, 20, "ASC-3732", "15151212");
+            Rentadora.Instancia.alquilarVehiculo(DateTime.Now, new DateTime(2018, 03, 13), 15, 20, "ASC-3732", "123456789123");
         }
 
 

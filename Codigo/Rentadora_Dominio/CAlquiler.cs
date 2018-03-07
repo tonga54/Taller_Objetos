@@ -156,57 +156,12 @@ namespace Rentadora_Dominio
             return matriculas;
         }
 
-        #region controles
-
-        public int verificarDatos(string tipo, string texto, decimal numerico, int entero, DateTime fecha1, DateTime fecha2)
-        {
-            int devolucion = 0;
-
-            switch (tipo)
-            {
-                case "T":
-
-                    if (texto.Length >= 1)
-                    {
-                        devolucion = 1;
-                    }
-
-                    break;
-                case "N":
-
-                    if (numerico >= 1)
-                    {
-                        devolucion = 2;
-                    }
-
-                    break;
-                case "E":
-
-                    if (entero >= 1)
-                    {
-                        devolucion = 3;
-                    }
-
-                    break;
-                case "F":
-
-                    if (fecha1 < fecha2 && fecha1 >= DateTime.Today)
-                    {
-                        devolucion = 4;
-                    }
-
-                    break;
-            }
-
-            return devolucion;
-        }
-
         public bool verificarFechas(DateTime fecha1, DateTime fecha2)
         {
 
             bool devolucion = false;
 
-            if (fecha1 < fecha2 && fecha1 >= DateTime.Today && fecha2 >= DateTime.Today)
+            if (fecha1 < fecha2 && fecha1 >= DateTime.Today && fecha2 > DateTime.Today)
             {
                 devolucion = true;
             }
@@ -250,8 +205,6 @@ namespace Rentadora_Dominio
 
             return devolucion;
         }
-
-        #endregion
 
     }
 }
