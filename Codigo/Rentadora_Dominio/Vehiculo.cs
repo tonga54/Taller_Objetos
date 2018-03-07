@@ -100,9 +100,8 @@ namespace Rentadora_Dominio
         {
 
             decimal precio = this.TipoVehiculo.PrecioDiario;
-
             return precio;
-
         }
+
     }
 }

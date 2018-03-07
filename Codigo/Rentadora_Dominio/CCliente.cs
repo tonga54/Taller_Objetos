@@ -33,7 +33,7 @@ namespace Rentadora_Dominio
         }
         
         //Particular
-        public string agregarCliente (int telefono, string documento, string tipoDocumento, string pais, string nombre, string apellido)
+        public string agregarCliente(int telefono, string documento, string tipoDocumento, string pais, string nombre, string apellido)
         {
             string retorno = "";
             if (telefono.ToString().Length >= 8 && telefono.ToString().Length <= 15)

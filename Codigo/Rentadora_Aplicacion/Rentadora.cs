@@ -77,7 +77,7 @@ namespace Rentadora_Aplicacion
 
         }
 
-        public TipoVehiculo buscarTipoVehiculo(string modelo,string marca)
+        public TipoVehiculo buscarTipoVehiculo(string modelo, string marca)
         {
             TipoVehiculo tipoVehiculo = CTipoVehiculo.Instancia.buscarTipoVehiculo(modelo, marca);
             return tipoVehiculo;
