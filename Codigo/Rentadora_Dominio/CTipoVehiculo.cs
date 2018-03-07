@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Rentadora_Dominio
 {
 
-    //[Serializable]
+    [Serializable]
 
-    public class CTipoVehiculo
+    public class CTipoVehiculo : ISerializable
     {
         private List<TipoVehiculo> tiposVehiculos = new List<TipoVehiculo>();
         private static CTipoVehiculo instancia = null;
@@ -123,6 +124,20 @@ namespace Rentadora_Dominio
             
 
             return tipoVeh;
+
+        }
+
+        public CTipoVehiculo(SerializationInfo info, StreamingContext context)
+        {
+            //usa cuando desearealiza
+            this.tiposVehiculos = info.GetValue("tiposVehiculos", typeof(List<TipoVehiculo>)) as List<TipoVehiculo>;
+            CTipoVehiculo.instancia = this;
+        }
+
+        void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            //usa cuando serializa
+            info.AddValue("tiposVehiculos", this.tiposVehiculos, typeof(List<TipoVehiculo>));
 
         }
 

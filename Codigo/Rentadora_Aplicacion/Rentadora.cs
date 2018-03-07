@@ -25,9 +25,7 @@ namespace Rentadora_Aplicacion
         }
 
         private Rentadora() { }
-
-
-
+        
         public Usuario autenticarse(string nombre, string contrasenia)
         {
             Usuario usr = null;
@@ -265,16 +263,49 @@ namespace Rentadora_Aplicacion
 
         public void preCargarDatos()
         {
-            Rentadora.Instancia.agregarCliente(098125846, 123456789123, "Empresa X", "Luis",1980);
+            preCargarUsuarios();
+            preCargarClientes();
+            preCargarAlquileres();
+        }
+
+        public void preCargarUsuarios()
+        {
             Rentadora.Instancia.registrarUsuario("gerente1", "gerente1", "gerente");
+            Rentadora.Instancia.registrarUsuario("gerente2", "gerente2", "gerente");
             Rentadora.Instancia.registrarUsuario("administrador1", "administrador1", "administrador");
+            Rentadora.Instancia.registrarUsuario("administrador2", "administrador2", "administrador");
             Rentadora.Instancia.registrarUsuario("vendedor1", "vendedor1", "vendedor");
+            Rentadora.Instancia.registrarUsuario("vendedor2", "vendedor2", "vendedor");
+        }
+
+        public void preCargarClientes()
+        {
+            Rentadora.Instancia.agregarCliente(098125846, 123456789123, "Empresa X", "Luis", 1980);
+            Rentadora.Instancia.agregarCliente(091125846, 965123451234, "Empresa N", "Marcos", 2010);
+            Rentadora.Instancia.agregarCliente(099825846, 413258525656, "Empresa Z", "Juan", 2005);
+            Rentadora.Instancia.agregarCliente(099525236, 648416981563, "Empresa G", "Pedro", 2011);
+            Rentadora.Instancia.agregarCliente(099515156, 896513548922, "Empresa R", "Maria", 2001);
+            Rentadora.Instancia.agregarCliente(089118165, "12345678", "ced", "URU", "Lucas", "Vasquez");
+            Rentadora.Instancia.agregarCliente(081213545, "BRA-37848465", "pas", "BRA", "Lautaro", "Martinez");
+            Rentadora.Instancia.agregarCliente(098784355, "VEN-46848646", "pas", "VEN", "Marco", "Asensio");
+            Rentadora.Instancia.agregarCliente(081861651, "51516113", "dni", "ARG", "Lionel", "Messi");
+            Rentadora.Instancia.agregarCliente(213213135, "31345452", "ced", "URU", "Edinson", "Cavani");
         }
 
         public void preCargarAlquileres()
         {
-            Rentadora.Instancia.alquilarVehiculo(DateTime.Now, new DateTime(2018, 03, 13), 15, 20, "ASC-3732", "123456789123");
+            Rentadora.Instancia.alquilarVehiculo(DateTime.Now, new DateTime(2018, 03, 25), 15, 20, "ASC-3732", "123456789123");
+            Rentadora.Instancia.alquilarVehiculo(DateTime.Now, new DateTime(2018, 04, 19), 15, 20, "SAX-4422", "123456789123");
+            Rentadora.Instancia.alquilarVehiculo(DateTime.Now, new DateTime(2018, 04, 13), 15, 20, "MXA-2624", "965123451234");
+            Rentadora.Instancia.alquilarVehiculo(DateTime.Now, new DateTime(2018, 03, 29), 15, 20, "LLX-5423", "BRA-37848465");
+            Rentadora.Instancia.alquilarVehiculo(DateTime.Now, new DateTime(2018, 05, 13), 15, 20, "LAC-8632", "123456789123");
+            Rentadora.Instancia.alquilarVehiculo(DateTime.Now, new DateTime(2018, 03, 19), 15, 20, "MIA-3215", "31345452");
+            Rentadora.Instancia.alquilarVehiculo(DateTime.Now, new DateTime(2018, 03, 28), 15, 20, "GSW-9814", "31345452");
+            Rentadora.Instancia.alquilarVehiculo(DateTime.Now, new DateTime(2018, 04, 15), 15, 20, "DYE-2135", "VEN-46848646");
+            Rentadora.Instancia.alquilarVehiculo(DateTime.Now, new DateTime(2018, 04, 14), 15, 20, "DRF-6814", "123456789123");
+            Rentadora.Instancia.alquilarVehiculo(DateTime.Now, new DateTime(2018, 03, 21), 15, 20, "AML-9822", "51516113");
         }
+
 
 
     }

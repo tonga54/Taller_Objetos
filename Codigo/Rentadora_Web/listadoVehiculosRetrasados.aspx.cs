@@ -24,8 +24,17 @@ namespace Rentadora_Web
         {
             List<Alquiler> lista = Rentadora.Instancia.listadoVehiculosRetrasados("gerente");
             Rentadora.Instancia.grabar(rutaArchivo,Session["nombre"].ToString(),DateTime.Now);
-            grdVehiculosRetrasados.DataSource = lista;
-            grdVehiculosRetrasados.DataBind();
+            if(lista.Count == 0)
+            {
+                string response = "ERROR: No existen vehiculos retrasados";
+                response = Vendedor.analizarRespuesta(response);
+                lblEstado.Text = response;
+            }else
+            {
+                grdVehiculosRetrasados.DataSource = lista;
+                grdVehiculosRetrasados.DataBind();
+            }
         }
+
     }
 }

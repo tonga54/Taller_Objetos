@@ -18,18 +18,7 @@ namespace Rentadora_Web
             string serializado = HttpRuntime.AppDomainAppPath + @"binario\serial.bin";
             string vehiculos = HttpRuntime.AppDomainAppPath + @"vehiculos\vehiculos.txt";
             string tiposVehiculos = HttpRuntime.AppDomainAppPath + @"vehiculos\tiposVehiculos.txt";
-            Rentadora.Instancia.preCargarDatos();
-
-
-            /*if (File.Exists(serializado))
-            {
-                Repositorio rep = new Repositorio(serializado);
-                rep.Deserealizable();
-            }else
-            {
-                //Rentadora.Instancia.preCargarDatos();
-            }
-            */
+            
 
             if (File.Exists(tiposVehiculos))
             {
@@ -39,9 +28,17 @@ namespace Rentadora_Web
             {
                 Rentadora.Instancia.leerDatosVehiculos(vehiculos);
             }
-            
 
-            Rentadora.Instancia.preCargarAlquileres();
+            if (File.Exists(serializado))
+            {
+                Repositorio rep = new Repositorio(serializado);
+                rep.Deserealizar();
+            }
+            else
+            {
+                Rentadora.Instancia.preCargarDatos();
+                Rentadora.Instancia.preCargarAlquileres();
+            }
 
         }
 
@@ -73,7 +70,7 @@ namespace Rentadora_Web
         protected void Application_End(object sender, EventArgs e)
         {
             Repositorio rep = new Repositorio(HttpRuntime.AppDomainAppPath + @"binario\serial.bin");
-            rep.Serializable();
+            rep.Serializar();
         }
 
 

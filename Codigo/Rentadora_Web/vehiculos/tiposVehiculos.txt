@@ -1,4 +1,11 @@
 Chevrolet@Onix@200
+Volskwagen@Gol@50
 Peugeot@306@400
 Fiat@600@300
-Volskwagen@Gol@150
+Ferrari@N500@800
+Nissan@Cobra@230
+Fiat@700@150
+Mazda@XS@150
+Fiat@Siena@125
+Chevrolet@Camaro@375
+Aston Martin@200@500

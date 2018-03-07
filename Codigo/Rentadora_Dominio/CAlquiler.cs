@@ -109,7 +109,7 @@ namespace Rentadora_Dominio
                             Alquiler alq = new Alquiler(cliente, vehiculo, horaInicio, horaFin, fechaInicio, fechaFin);
                             alquileres.Add(alq);
                             string costo = alq.calcularCosto().ToString();
-                            devolucion = "CORRECTO: Alquiler agregado con exito<br>Costo: " + costo;
+                            devolucion = "CORRECTO: Alquiler agregado con exito<br>Costo: $" + costo;
                         }
                         else
                         {
@@ -134,9 +134,18 @@ namespace Rentadora_Dominio
             return devolucion;
         }
 
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        public CAlquiler(SerializationInfo info, StreamingContext context)
         {
-            throw new NotImplementedException();
+            //usa cuando desearealiza
+            this.alquileres = info.GetValue("alquileres", typeof(List<Alquiler>)) as List<Alquiler>;
+            CAlquiler.instancia = this;
+        }
+
+        void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            //usa cuando serializa
+            info.AddValue("alquileres", this.alquileres, typeof(List<Alquiler>));
+
         }
 
         public List<string> buscarMatriculasXCliente(Cliente cli)

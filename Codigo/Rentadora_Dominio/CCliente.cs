@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Rentadora_Dominio
 {
-    //[Serializable]
+    [Serializable]
 
-    public class CCliente
+    public class CCliente : ISerializable
     {
         private List<Cliente> clientes = new List<Cliente>();
         private static CCliente instancia = null;
@@ -39,22 +40,29 @@ namespace Rentadora_Dominio
             {
                 if (verificarDocumento(documento, tipoDocumento))
                 {
-                    if (pais != "")
+                    if (buscarCliente(documento) == null)
                     {
-                        if(nombre != "" && apellido != "")
+                        if (pais != "")
                         {
-                            Particular part = new Particular(telefono, documento, tipoDocumento, pais, nombre, apellido);
-                            clientes.Add(part);
-                            retorno = "CORRECTO: Cliente agregado con exito";
+                            if(nombre != "" && apellido != "")
+                            {
+                                Particular part = new Particular(telefono, documento, tipoDocumento, pais, nombre, apellido);
+                                clientes.Add(part);
+                                retorno = "CORRECTO: Cliente agregado con exito";
+                            }
+                            else
+                            {
+                                retorno = "ERROR: Nombre / Apellido vacio";
+                            }
                         }
                         else
                         {
-                            retorno = "ERROR: Nombre / Apellido vacio";
+                            retorno = "ERROR: Pais invalido";
                         }
                     }
                     else
                     {
-                        retorno = "ERROR: Pais invalido";
+                        retorno = "ERROR: Ya existe un cliente con el documento ingresado";
                     }
                 }
                 else
@@ -78,29 +86,36 @@ namespace Rentadora_Dominio
             {
                 if (rut.ToString().Length == 12)
                 {
-                    if (razonSocial != "")
+                    if (buscarCliente(rut.ToString()) == null)
                     {
-                        if (nombre != "")
+                        if (razonSocial != "")
                         {
-                            if(anio > 0)
+                            if (nombre != "")
                             {
-                                Empresa emp = new Empresa(telefono, rut, razonSocial, nombre, anio);
-                                clientes.Add(emp);
-                                retorno = "CORRECTO: Cliente agregado con exito";
+                                if(anio > 0)
+                                {
+                                    Empresa emp = new Empresa(telefono, rut, razonSocial, nombre, anio);
+                                    clientes.Add(emp);
+                                    retorno = "CORRECTO: Cliente agregado con exito";
+                                }
+                                else
+                                {
+                                    retorno = "ERROR: Anio invalido";
+                                }
                             }
                             else
                             {
-                                retorno = "ERROR: Anio invalido";
+                                retorno = "ERROR: Nombre / Apellido vacio";
                             }
                         }
                         else
                         {
-                            retorno = "ERROR: Nombre / Apellido vacio";
+                            retorno = "ERROR: Razon social vacia";
                         }
                     }
                     else
                     {
-                        retorno = "ERROR: Razon social vacia";
+                        retorno = "ERROR: Ya existe un cliente con el docuento ingresado";
                     }
                 }
                 else
@@ -170,7 +185,7 @@ namespace Rentadora_Dominio
                             }
                         break;
                     case "pas":
-                            if (documento.Length == 8)
+                            if (documento.Length >= 6 && documento.Length <= 18)
                             {
                                 devolucion = true;
                             }
@@ -186,6 +201,20 @@ namespace Rentadora_Dominio
             }
 
             return devolucion;
+        }
+
+        public CCliente(SerializationInfo info, StreamingContext context)
+        {
+            //usa cuando desearealiza
+            this.clientes = info.GetValue("clientes", typeof(List<Cliente>)) as List<Cliente>;
+            CCliente.instancia = this;
+        }
+
+        void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            //usa cuando serializa
+            info.AddValue("clientes", this.clientes, typeof(List<Cliente>));
+
         }
 
     }

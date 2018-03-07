@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Rentadora_Dominio
 {
 
-    //[Serializable]
+    [Serializable]
 
-    public class CUsuario
+    public class CUsuario : ISerializable
     {
         private List<Usuario> usuarios = new List<Usuario>();
         private static CUsuario instancia = null;
@@ -109,6 +110,20 @@ namespace Rentadora_Dominio
             }
 
             return dev;
+
+        }
+
+        public CUsuario(SerializationInfo info, StreamingContext context)
+        {
+            //usa cuando desearealiza
+            this.usuarios = info.GetValue("usuarios", typeof(List<Usuario>)) as List<Usuario>;
+            CUsuario.instancia = this;
+        }
+
+        void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            //usa cuando serializa
+            info.AddValue("usuarios", this.usuarios, typeof(List<Usuario>));
 
         }
 

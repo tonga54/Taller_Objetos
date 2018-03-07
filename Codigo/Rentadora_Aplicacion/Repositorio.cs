@@ -18,7 +18,7 @@ namespace Rentadora_Aplicacion
         private CTipoVehiculo tipoVehiculo;
         private CUsuario usuario;
         private CVehiculo vehiculo;
-        private string rutaArchivo;
+        private String rutaArchivo;
 
         public Repositorio(string rutaArchivo)
         {
@@ -30,16 +30,15 @@ namespace Rentadora_Aplicacion
             this.alquiler = CAlquiler.Instancia;
         }
 
-        public void Serializable()
+        public void Serializar()
         {
             FileStream fs = new FileStream(rutaArchivo, FileMode.Create);
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(fs, this);
-            //this, todos los atributos de esta clase
             fs.Close();
         }
 
-        public void Deserealizable()
+        public void Deserealizar()
         {
             FileStream fs = new FileStream(this.rutaArchivo, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();

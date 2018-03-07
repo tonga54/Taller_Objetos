@@ -307,6 +307,20 @@ table th {
 
 
 
+#btnCerrarSesion{
+    border: 0px;
+    background-color: inherit;
+    color: white;
+    margin-right: 20px;
+    font-family: "SourceSansPro-Regular";
+    font-size:15px;
+}
+
+#btnCerrarSesion:hover{
+    text-decoration:underline;
+    cursor:pointer;
+}
+
 
 /*
     articleContent_ValidationSummary1

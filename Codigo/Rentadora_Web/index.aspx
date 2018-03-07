@@ -8,40 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/index.css" />
-
-    <script>
-   
-        function validar (){
-            var user = document.getElementById("<%= txtUser.ClientID %>").value;
-            var pass = document.getElementById("<%= txtPassword.ClientID %>").value;
-            var bandera = true;
-            var mensaje = "ERROR\n";
-
-            if (user == "") {
-                mensaje += "El usuario esta vacio";
-                bandera = false;
-            }
-
-            if (pass == "") {
-                mensaje += "La contraseña esta vacia";
-                bandera = false;
-            }
-
-            if(!bandera){
-                alert(mensaje);
-            }
-            return bandera;
-        }
-
-    </script>
-
   </head>
   <body>
 
     <div class="container">
         <form method="post" class="login" runat="server">
             <span class="loginTitle" id="loginTitle">Iniciar Sesion</span>
-            <!-- <label for=txtUser"">Usuario</label> -->
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtUser" ErrorMessage="Nombre de usuario requerido">*</asp:RequiredFieldValidator>
                 <asp:TextBox ID="txtUser" runat="server" ToolTip="Usuario" PlaceHolder="Usuario"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtPassword" ErrorMessage="Password requerido">*</asp:RequiredFieldValidator>

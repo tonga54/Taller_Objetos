@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Rentadora_Dominio
 {
+
+    [Serializable]
+
     public abstract class Cliente
     {
         protected int telefono;

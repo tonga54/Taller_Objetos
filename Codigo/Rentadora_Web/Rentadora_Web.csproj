@@ -128,8 +128,6 @@
     <Content Include="fonts\icomoon.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.aspx" />
-    <Content Include="js\index.js" />
-    <Content Include="js\validation.js" />
     <Content Include="listadoVehiculosRetrasados.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -257,6 +255,7 @@
     <Folder Include="binario\" />
     <Folder Include="bitacoras\" />
     <Folder Include="img\" />
+    <Folder Include="js\" />
     <Folder Include="vehiculos\" />
   </ItemGroup>
   <PropertyGroup>

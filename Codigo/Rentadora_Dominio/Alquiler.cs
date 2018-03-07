@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Rentadora_Dominio
 {
+
+    [Serializable]
+
     public class Alquiler
     {
         private DateTime fechaIni;
@@ -136,10 +139,17 @@ namespace Rentadora_Dominio
 
         public decimal montoFaltante()
         {
-            TimeSpan cantidadDiasExtra = DateTime.Now.Subtract(fechaFin);
-            decimal costoBase = cantidadDiasExtra.Days * Vehiculo.costoTipoVehiculo();
-            decimal costoFinal = cliente.calcularCosto(costoBase);
-            return Math.Round(costoFinal);
+            decimal costoFinal = 0;
+            if(DateTime.Now > fechaFin)
+            {
+                TimeSpan cantidadDiasExtra = DateTime.Now.Subtract(fechaFin);
+                decimal costoBase = cantidadDiasExtra.Days * Vehiculo.costoTipoVehiculo();
+                costoFinal = cliente.calcularCosto(costoBase);
+                return Math.Round(costoFinal);
+            }
+
+            return costoFinal;
+            
         }
 
         public decimal calcularCosto()
